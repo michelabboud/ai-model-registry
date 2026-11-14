@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "kind": "harness",
+  "id": "claude-code",
+  "display_name": "Claude Code",
+  "command": "claude",
+  "aliases": [],
+  "adapter": "claude_env",
+  "protocols": [
+    "anthropic_messages"
+  ],
+  "config_style": "env",
+  "env": [
+    {
+      "name": "ANTHROPIC_BASE_URL",
+      "role": "base_url",
+      "note": "Base URL for the Anthropic Messages gateway."
+    },
+    {
+      "name": "ANTHROPIC_AUTH_TOKEN",
+      "role": "auth_token",
+      "note": "Bearer authentication for the gateway."
+    }
+  ],
+  "profile_flag": null,
+  "model_flag": "--model",
+  "version_probe": [],
+  "version_match": null,
+  "docs_url": "https://code.claude.com/docs",
+  "icon": "claude-code",
+  "note": "Environment settings may also be persisted in settings JSON. --model confirmed via installed binary --help on 2026-11-14; no named profile flag. Anthropic does not support routing Claude Code to non-Claude models through a gateway. A saved subscription login may remain active when only the base URL is changed.",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://code.claude.com/docs/en/llm-gateway",
+    "https://code.claude.com/docs/en/llm-gateway-connect.md",
+    "https://code.claude.com/docs/en/llm-gateway-protocol.md",
+    "https://code.claude.com/docs/en/setup",
+    "https://github.com/anthropics/claude-code/releases"
+  ]
+}

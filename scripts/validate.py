@@ -440,6 +440,12 @@ def semantic_problems(data, kind, stem, provider_stems, today):
                             errors.append((at, 'probe must have the cheapest non-null ga text input price'))
                             break
     if kind == 'harness':
+        protocols = data.get('protocols')
+        if isinstance(protocols, list):
+            if data.get('adapter') == 'detect_only' and protocols:
+                errors.append(('/protocols', 'detect_only requires an empty protocol list'))
+            elif data.get('adapter') != 'detect_only' and not protocols:
+                errors.append(('/protocols', 'a configurable adapter requires at least one protocol'))
         # These restrictions deliberately survive edits to the published schema.
         commands = [('/command', data.get('command'))]
         if isinstance(data.get('aliases'), list):

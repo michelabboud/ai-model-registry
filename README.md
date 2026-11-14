@@ -7,9 +7,13 @@ data, schemas, validation tooling, and documentation, with no application runtim
 credentials, or keys.
 
 **No release exists yet.** Provider and text-model seed data is verified against
-official pages archived on 2026-11-14. Harness data remains a later task. See the
+official pages archived on 2026-11-14. Thirteen coding-CLI harness records use the
+coordinator's official-source and installed-binary research from that date. See the
 [source and omission report](docs/reports/2026-11-14-seed-data-sources.md) for the
-inventory, unknown values, endpoint restrictions, and pricing conditions.
+provider inventory, unknown values, endpoint restrictions, and pricing conditions;
+the [harness report](docs/reports/2026-11-14-harness-records.md) records CLI fields,
+sources and unverified omissions. These are archived research claims, not live
+vendor or endpoint checks performed by validation.
 
 ## Data directories
 
@@ -17,7 +21,7 @@ inventory, unknown values, endpoint restrictions, and pricing conditions.
 | --- | --- |
 | `providers/` | One provider object per `<id>.json`: endpoint, protocols, and authentication role. |
 | `models/` | One model collection per `<provider-id>.json`: status, tier, capabilities, and USD-per-million-token prices, including prompt-cache prices. |
-| `harnesses/` | One coding-CLI integration per `<id>.json`: command, adapter, and environment roles. |
+| `harnesses/` | One coding-CLI integration per `<id>.json`: command, adapter, required wire protocols, and environment roles. |
 | `media/` | Reserved for Genie. Ignored by this validator; no media contract is defined by R1. |
 
 Every real value must be verified against an official vendor page and dated.
@@ -94,6 +98,7 @@ shown filenames. `schema_version` versions the data contract independently of
   "command": "example-cli",
   "aliases": [],
   "adapter": "env_generic",
+  "protocols": ["openai_chat"],
   "config_style": null,
   "env": [
     {"name": "EXAMPLE_API_KEY", "role": "api_key", "note": "Supplied by the consuming app."}
@@ -141,16 +146,38 @@ Each model file has exactly one GA probe and one GA default. The probe must have
 known input price no greater than any other GA model's known input price.
 
 Harnesses declare roles, never environment values. The consuming application
-supplies API keys, tokens, gateway endpoints, and other local values. Commands are
+supplies API keys, tokens, gateway endpoints, and other local values.
+`config_style` is a short format label (`toml`, `json`, `jsonc`, `yaml`, `json5`,
+`env`) or null; notes retain prerequisites that span formats. Commands are
 bare names, adapters come from a closed enum, and dangerous environment names are
 rejected in both schemas and the semantic validator. Icons are embedded-asset IDs
 resolved by the app, not files shipped by the registry.
 
-Providers declare supported `protocols`. Harnesses may optionally declare
-`protocols` using the same closed enum. `gemini_generate` describes generateContent;
-`gemini_interactions` describes the separate Interactions API. A provider-level
-protocol list is not a claim that every model supports every endpoint; read model
-notes for exceptions, including runtime-only Bedrock models.
+Providers declare supported `protocols`. Harnesses require a unique `protocols`
+array with zero to four entries from `anthropic_messages`, `openai_chat`,
+`openai_responses`, `gemini_generate`, and `gemini_interactions`. The array is empty
+if and only if `adapter` is `detect_only`; every configurable adapter needs at
+least one verified custom-endpoint protocol. Adapters describe configuration,
+so consumers must use `protocols` to select the gateway ingress instead of
+inferring it from `env_generic` or `config_snippet`. Detection-only records do not
+establish gateway compatibility. See [ADR 0004](docs/adr/0004-harness-protocols-field.md).
+
+`gemini_generate` describes generateContent; `gemini_interactions` describes the
+separate Interactions API. Provider protocols retain their broader vocabulary,
+including cloud-native APIs. A provider-level protocol list is not a claim that
+every model supports every endpoint; read model notes for exceptions, including
+runtime-only Bedrock models.
+
+## Icons
+
+The registry never ships images. Apps map these app-neutral `icon` IDs to their
+own embedded assets:
+
+`claude-code`, `openai`, `opencode`, `aider`, `github-copilot`, `openhands`,
+`openclaw`, `hermes-agent`, `antigravity`, `xai`, `meta`, `cursor`.
+
+An ID identifies an application or vendor; it is not an asset URL, a brand-use
+license, or a claim that a similarly named icon library entry is the same brand.
 
 ## Tiers
 

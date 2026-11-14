@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "kind": "harness",
+  "id": "copilot-cli",
+  "display_name": "GitHub Copilot CLI",
+  "command": "copilot",
+  "aliases": [],
+  "adapter": "config_snippet",
+  "protocols": [
+    "openai_chat",
+    "openai_responses",
+    "anthropic_messages"
+  ],
+  "config_style": "json",
+  "env": [],
+  "profile_flag": null,
+  "model_flag": "--model",
+  "version_probe": [],
+  "version_match": null,
+  "docs_url": "https://docs.github.com/copilot/concepts/agents/about-copilot-cli",
+  "icon": "github-copilot",
+  "note": "Configure ~/.copilot/providers.json, or override its path with COPILOT_PROVIDERS_CONFIG. Provider type and wireApi choose Messages, Chat Completions or Responses. Nonempty providers.json takes precedence over legacy provider environment variables; strings do not expand environment references. Exact JSON nesting is unverified, so no executable snippet is supplied.",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/use-byok-models",
+    "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+    "https://github.blog/changelog/2026-04-07-copilot-cli-now-supports-byok-and-local-models/",
+    "https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli",
+    "https://github.com/github/copilot-cli/releases"
+  ]
+}

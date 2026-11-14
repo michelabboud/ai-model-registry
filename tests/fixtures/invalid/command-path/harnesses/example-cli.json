@@ -30,5 +30,8 @@
   "verified": "2026-01-01",
   "sources": [
     "https://example.com/official-example-only"
+  ],
+  "protocols": [
+    "openai_chat"
   ]
 }

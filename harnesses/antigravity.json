@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "kind": "harness",
+  "id": "antigravity",
+  "display_name": "Google Antigravity CLI",
+  "command": "agy",
+  "aliases": [],
+  "adapter": "env_generic",
+  "protocols": [
+    "gemini_generate"
+  ],
+  "config_style": "env",
+  "env": [
+    {
+      "name": "GEMINI_API_KEY",
+      "role": "api_key",
+      "note": "Used only with Gemini provider selection enabled in settings JSON."
+    },
+    {
+      "name": "GOOGLE_GEMINI_BASE_URL",
+      "role": "base_url",
+      "note": "Overrides the Gemini-compatible model endpoint."
+    }
+  ],
+  "profile_flag": null,
+  "model_flag": "--model",
+  "version_probe": [],
+  "version_match": null,
+  "docs_url": "https://antigravity.google/docs/cli/reference/",
+  "icon": "antigravity",
+  "note": "Requires Gemini provider selection in ~/.gemini/antigravity-cli/settings.json as well as environment settings. GEMINI_API_KEY alone has no effect and .env is not loaded. Only Gemini-compatible endpoints are documented. The antigravity launcher alias and CLI v1.5.8 release date remain unverified.",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://antigravity.google/docs/install/",
+    "https://antigravity.google/docs/cli/reference/",
+    "https://antigravity.google/docs/getting-started?tab=cli",
+    "https://antigravity.google/docs/changelog/"
+  ]
+}

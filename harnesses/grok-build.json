@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "kind": "harness",
+  "id": "grok-build",
+  "display_name": "Grok Build",
+  "command": "grok",
+  "aliases": [],
+  "adapter": "config_snippet",
+  "protocols": [
+    "openai_chat",
+    "openai_responses",
+    "anthropic_messages"
+  ],
+  "config_style": "toml",
+  "env": [],
+  "profile_flag": null,
+  "model_flag": "--model",
+  "version_probe": [],
+  "version_match": null,
+  "docs_url": "https://docs.x.ai/build/overview",
+  "icon": "xai",
+  "note": "Configure ~/.grok/config.toml model entries with base_url, env_key and api_backend (chat_completions, responses or messages). --model confirmed via installed binary --help on 2026-11-14. -p/--single is a one-shot prompt, not a config profile; sandbox profiles are separate. The api_backend default and release date remain unverified.",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://x.ai/news/grok-build-cli",
+    "https://docs.x.ai/build/overview",
+    "https://docs.x.ai/build/settings/reference",
+    "https://github.com/xai-org/grok-build"
+  ]
+}

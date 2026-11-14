@@ -6,6 +6,19 @@ separate future sequence, `registry/<N>`.
 
 ## Unreleased
 
+## [0.3.0] - 2026-11-15
+
+### Added
+
+- R3 coding-CLI records for Claude Code, Codex, OpenCode v1/v2, Aider, Copilot,
+  OpenHands, OpenClaw, Hermes Agent, Antigravity, Grok Build, Muse Code and Cursor,
+  with dated research sources and explicit detection-only/unknown limitations.
+- Required harness wire protocols, with a unique zero-to-four-entry array and
+  semantic enforcement that it is empty exactly for `detect_only`; fixtures,
+  regression tests and ADR 0004 describe the pre-release contract change.
+- App-neutral icon ID inventory and per-CLI field/source/omission audit; the
+  registry ships no image assets. Unverified enrichment remains in the backlog.
+
 ## [0.2.0] - 2026-11-15
 
 ### Added

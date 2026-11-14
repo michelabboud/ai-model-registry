@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "kind": "harness",
+  "id": "hermes-agent",
+  "display_name": "Hermes Agent",
+  "command": "hermes",
+  "aliases": [],
+  "adapter": "config_snippet",
+  "protocols": [
+    "openai_chat",
+    "anthropic_messages",
+    "openai_responses"
+  ],
+  "config_style": "yaml",
+  "env": [],
+  "profile_flag": "--profile",
+  "model_flag": "--model",
+  "version_probe": [],
+  "version_match": null,
+  "docs_url": "https://hermes-agent.nousresearch.com/docs",
+  "icon": "hermes-agent",
+  "note": "Configure the custom provider in ~/.hermes/config.yaml; transport/api_mode selects chat_completions, anthropic_messages or codex_responses. --profile (-p) is global; --model applies to hermes chat. Profiles live under ~/.hermes/profiles/. OPENAI_BASE_URL is honored only by openai-api, not custom.",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://hermes-agent.nousresearch.com/docs/integrations/providers",
+    "https://hermes-agent.nousresearch.com/docs/user-guide/profiles",
+    "https://hermes-agent.nousresearch.com/docs/reference/cli-commands",
+    "https://hermes-agent.nousresearch.com/docs/getting-started/installation",
+    "https://github.com/NousResearch/hermes-agent/releases"
+  ]
+}

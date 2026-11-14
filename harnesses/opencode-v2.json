@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "harness",
+  "id": "opencode-v2",
+  "display_name": "OpenCode v2",
+  "command": "opencode",
+  "aliases": [],
+  "adapter": "opencode_v2",
+  "protocols": [
+    "openai_chat",
+    "anthropic_messages"
+  ],
+  "config_style": "jsonc",
+  "env": [],
+  "profile_flag": null,
+  "model_flag": null,
+  "version_probe": [
+    "--version"
+  ],
+  "version_match": {
+    "major_pattern": "^opencode\\s+v(2)\\.[0-9]+\\.[0-9]+(?:[^0-9].*)?$"
+  },
+  "docs_url": "https://opencode.ai/docs/",
+  "icon": "opencode",
+  "note": "Prefer native V2 providers/package/settings config; V1 config remains accepted and native V2 values win conflicts. OpenAI-compatible and Anthropic-compatible packages are documented. Responses routing and the V2 --model flag remain unverified. Installed opencode --version printed opencode v2.2.7 on 2026-11-14.",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://opencode.ai/docs/",
+    "https://opencode.ai/docs/migrate-v1/",
+    "https://opencode.ai/docs/providers/",
+    "https://opencode.ai/v2/docs/config",
+    "https://opencode.ai/v2/docs/cli",
+    "https://github.com/anomalyco/opencode/releases/tag/v2.3.0",
+    "https://github.com/anomalyco/opencode/releases/tag/v2.2.0"
+  ]
+}

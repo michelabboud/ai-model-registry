@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "kind": "harness",
+  "id": "codex",
+  "display_name": "OpenAI Codex CLI",
+  "command": "codex",
+  "aliases": [],
+  "adapter": "codex_config",
+  "protocols": [
+    "openai_responses"
+  ],
+  "config_style": "toml",
+  "env": [],
+  "profile_flag": "--profile",
+  "model_flag": "--model",
+  "version_probe": [],
+  "version_match": null,
+  "docs_url": "https://learn.chatgpt.com/docs",
+  "icon": "openai",
+  "note": "Configure the user-level config.toml model_providers entry with base_url, env_key and wire_api. Responses is the only supported wire API. --profile (-p) layers $CODEX_HOME/<name>.config.toml over the base user config; confirmed via installed binary --help on 2026-11-14. Project config ignores provider and profile keys.",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://learn.chatgpt.com/docs/config-file/config-reference",
+    "https://learn.chatgpt.com/docs/cli/reference",
+    "https://github.com/openai/codex",
+    "https://github.com/openai/codex/releases"
+  ]
+}

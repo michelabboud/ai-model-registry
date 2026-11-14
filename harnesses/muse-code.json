@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "kind": "harness",
+  "id": "muse-code",
+  "display_name": "Muse Code",
+  "command": "muse",
+  "aliases": [],
+  "adapter": "detect_only",
+  "protocols": [],
+  "config_style": null,
+  "env": [],
+  "profile_flag": null,
+  "model_flag": "--model",
+  "version_probe": [],
+  "version_match": null,
+  "docs_url": "https://dev.meta.ai/docs",
+  "icon": "meta",
+  "note": "Detection only: custom-endpoint wire protocol and bearer behavior remain unverified. --model and a Meta provider base URL override were confirmed via installed binary --help on 2026-11-14; no generic gateway support is established. --permission-profile controls permissions, not configuration. Provider settings keys, release date and a Muse-specific official logo remain unverified.",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2",
+    "https://dev.meta.ai/docs/coding-agents",
+    "https://dev.meta.ai/docs/muse-code/changelog"
+  ]
+}

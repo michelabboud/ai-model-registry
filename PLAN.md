@@ -2,7 +2,7 @@
 
 Dev mode: mvp
 
-Status: approved 2026-11-14. Written and last updated: 2026-11-14.
+Status: approved 2026-11-14. Written: 2026-11-14. Last updated: 2026-11-15.
 
 Threat sketch: a contributor or release attacker could change a model identifier,
 price, endpoint, command, or environment binding consumed by an application.
@@ -22,7 +22,7 @@ consult that plan for later tasks' full specifications and acceptance gates.
 | --- | --- | --- | --- | --- |
 | R1 | Repository skeleton, three JSON Schemas, standard-library validator, fixtures, tests, and validation CI | R1 lane; coordinator integrates and reviews | None | Done 2026-11-14 (local checks); coordinator review/checkpoint pending |
 | R2 | Officially sourced and dated vendor data; full scope in upstream plan | Coordinator-assigned lane | R1 accepted | Done locally 2026-11-14; coordinator acceptance/checkpoint pending |
-| R3 | Registry task specified in the upstream approved plan; no implementation authorized in this lane | Coordinator-assigned lane | As specified upstream | Open |
+| R3 | Required harness protocols and 13 officially sourced coding-CLI records | R3 lane; coordinator integrates and reviews | R1 and R2 supplied by coordinator | Done locally 2026-11-15; coordinator review/checkpoint pending |
 | R4 | Numbered signed releases: manifest, Ed25519 signature, and archive | Coordinator-assigned lane | As specified upstream | Open |
 | R5 | Vendor list-API work, including documenting key names without values; full scope upstream | Coordinator-assigned lane | As specified upstream | Open |
 | M1 | Consumer integration milestone; first consumer is The Operator, later Genie | Coordinator | As specified upstream | Open |
@@ -82,3 +82,32 @@ R2 local close-out: nine providers, 251 model/routing entries, clean 18-file
 validator, 80 passing tests, and independently checked source-review repairs.
 See [the final R2 handoff](docs/handoffs/2026-11-14-r2-seed-data-handoff.md).
 No Git write, version bump, network lookup, release, or later task admission ran.
+
+## R3 execution — 2026-11-14
+
+Dev mode: mvp. Authorized by the current R3 lane brief. Tasks within R3 run back
+to back; the lane returns to the coordinator after local verification and does not
+admit R4. No network, commit, tag, push, version bump or release is authorized.
+The threat sketch above still applies: new records contain environment roles and
+app-neutral icon IDs only, never values, executable snippets, or shipped images.
+
+The R3 owner handles the schema, semantic validator, fixtures/tests, ADR and shared
+documentation sequentially. One scoped records worker owned only `harnesses/`
+and the per-CLI source report, after the schema change lands locally. Both read
+only `.research/2026-11-14/harness-research.md`; it remains ignored. The native
+agent channel carries findings; the R3 owner integrates and runs required checks.
+The coordinator owns independent review and the later source checkpoint.
+
+| Step | Owner / file boundary | Evidence | Next step |
+| --- | --- | --- | --- |
+| Define required harness protocols | R3 owner: schema, validator, fixtures/tests, ADR 0004 | Positive and negative protocol contract tests | Populate records |
+| Write 13 sourced records and field audit | Records worker: `harnesses/`, R3 source report | Per-field research provenance and explicit omissions | Integrate documentation |
+| Document contract, icons and unknowns | R3 owner: README, architecture, progress, backlog and handoff | Research-to-record audit; all blocking UNVERIFIED items retained | Frozen-candidate verification |
+| Verify and hand back | R3 owner: integrated R3 candidate | Validator, unittest counts, record summary and Git status | Coordinator independent review/checkpoint |
+
+R3 local close-out: 13 harness records, required protocol contract, short format
+labels, clean 31-file validator, and 89 passing tests. See the
+[R3 handoff](docs/handoffs/2026-11-14-r3-harness-records-handoff.md) and
+[field/source audit](docs/reports/2026-11-14-harness-records.md). The coordinator
+owns independent review and checkpointing. No version, Git metadata, network,
+release, or later-task admission was changed by R3.

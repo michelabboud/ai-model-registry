@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "kind": "harness",
+  "id": "opencode-v1",
+  "display_name": "OpenCode v1",
+  "command": "opencode",
+  "aliases": [],
+  "adapter": "opencode_v1",
+  "protocols": [
+    "openai_chat",
+    "openai_responses"
+  ],
+  "config_style": "jsonc",
+  "env": [],
+  "profile_flag": null,
+  "model_flag": "--model",
+  "version_probe": [
+    "--version"
+  ],
+  "version_match": {
+    "major_pattern": "^(?:opencode\\s+)?v?(1)\\.[0-9]+\\.[0-9]+(?:[^0-9].*)?$"
+  },
+  "docs_url": "https://opencode.ai/v1/docs/",
+  "icon": "opencode",
+  "note": "V1 provider config uses provider, npm and options.baseURL. openai-compatible uses Chat Completions; the OpenAI adapter uses Responses. Select config via OPENCODE_CONFIG rather than a named profile. Exact V1 version output format is unverified; the major pattern accepts plain or opencode-prefixed semver.",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://opencode.ai/v1/docs/",
+    "https://opencode.ai/v1/docs/providers/",
+    "https://opencode.ai/v1/docs/cli/",
+    "https://github.com/anomalyco/opencode/releases"
+  ]
+}

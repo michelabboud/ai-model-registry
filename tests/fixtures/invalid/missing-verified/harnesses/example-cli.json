@@ -29,5 +29,8 @@
   "note": "Invented example; no real command is launched.",
   "sources": [
     "https://example.com/official-example-only"
+  ],
+  "protocols": [
+    "openai_chat"
   ]
 }

@@ -41,7 +41,8 @@ Supported keywords: `$schema`, `$id`, `title`, `description`, `type`, `propertie
    is no greater than every other GA model's known price. Status controls shutdown
    dates. Verification dates must be real and between 2024-01-01 and today in UTC.
    URLs are parsed, not trusted solely because they match a pattern. Version-match
-   regexes must compile and contain a capture group.
+   regexes must compile and contain a capture group. Harness protocol arrays
+   must be empty if and only if their adapter is `detect_only`.
 
 Input handling rejects files larger than 1 MiB, invalid UTF-8, duplicate JSON keys,
 NaN/Infinity, and nesting deeper than 32. Data directories accept only their direct
@@ -88,11 +89,21 @@ Clients
 must not silently coerce `null` to zero, infer unsupported cache prices, or treat a
 missing vendor fact as free service.
 
-Provider protocols and optional harness protocols share a closed vocabulary,
-including `gemini_generate` and `gemini_interactions` for distinct Gemini APIs.
-R1 had no harness protocol field; R2 adds an optional one rather than requiring
-unrelated harness data. Endpoint-specific model restrictions remain in notes;
-there is no per-model protocol override in schema v1.
+Harness `protocols` is required: zero to four unique entries from
+`anthropic_messages`, `openai_chat`, `openai_responses`, `gemini_generate`, and
+`gemini_interactions`. Empty means detection only and is permitted exactly when
+`adapter` is `detect_only`; the semantic pass rejects both empty configurable
+adapters and nonempty detection-only records. An adapter describes the config
+mechanism, not the wire format: `env_generic` and `config_snippet` span several
+protocols. Consumers select an ingress from the explicit protocol list. Unknown
+custom-endpoint protocols stay out of the list and in the source audit/backlog.
+See [ADR 0004](docs/adr/0004-harness-protocols-field.md), which replaces R2's
+optional harness field before release while keeping `schema_version: 1`.
+
+Provider protocols keep their broader closed vocabulary and existing bounds,
+including cloud-native APIs. Both vocabularies include `gemini_generate` and
+`gemini_interactions` for distinct Gemini APIs. Endpoint-specific model
+restrictions remain in notes; there is no per-model protocol override in schema v1.
 
 ## Release format to come
 

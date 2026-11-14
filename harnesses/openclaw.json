@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "kind": "harness",
+  "id": "openclaw",
+  "display_name": "OpenClaw",
+  "command": "openclaw",
+  "aliases": [],
+  "adapter": "config_snippet",
+  "protocols": [
+    "openai_chat",
+    "anthropic_messages"
+  ],
+  "config_style": "json5",
+  "env": [],
+  "profile_flag": "--profile",
+  "model_flag": null,
+  "version_probe": [],
+  "version_match": null,
+  "docs_url": "https://docs.openclaw.ai",
+  "icon": "openclaw",
+  "note": "Mainly a personal assistant gateway for chat apps. Configure models.providers in ~/.openclaw/openclaw.json (JSON5); api selects openai-completions or anthropic-messages. --profile isolates state under ~/.openclaw-<name>. Other wire APIs and a --model flag remain unverified; documented model selection uses the models set subcommand.",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://docs.openclaw.ai/install",
+    "https://docs.openclaw.ai/gateway/configuration",
+    "https://docs.openclaw.ai/concepts/model-providers/custom-providers",
+    "https://docs.openclaw.ai/cli",
+    "https://github.com/openclaw/openclaw"
+  ]
+}

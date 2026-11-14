@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "kind": "harness",
+  "id": "aider",
+  "display_name": "Aider",
+  "command": "aider",
+  "aliases": [],
+  "adapter": "env_generic",
+  "protocols": [
+    "openai_chat"
+  ],
+  "config_style": "env",
+  "env": [
+    {
+      "name": "OPENAI_API_BASE",
+      "role": "base_url",
+      "note": "Base URL for the OpenAI-compatible endpoint."
+    },
+    {
+      "name": "OPENAI_API_KEY",
+      "role": "api_key",
+      "note": "API key for the OpenAI-compatible endpoint."
+    }
+  ],
+  "profile_flag": null,
+  "model_flag": "--model",
+  "version_probe": [],
+  "version_match": null,
+  "docs_url": "https://aider.chat/docs/",
+  "icon": "aider",
+  "note": "Use an openai/ model name for the OpenAI-compatible endpoint. Optional --config (-c) selects a YAML file, not a named profile. Last published release in the research was v0.86.0 on 2025-08-09. Anthropic base URL override remains unverified.",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://aider.chat/docs/llms/openai-compat.html",
+    "https://aider.chat/docs/config/options.html",
+    "https://aider.chat/docs/llms/anthropic.html",
+    "https://aider.chat/docs/install.html",
+    "https://github.com/Aider-AI/aider/releases"
+  ]
+}

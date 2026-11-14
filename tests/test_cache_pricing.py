@@ -130,7 +130,7 @@ class CachePricingTests(unittest.TestCase):
 
 
 class ProtocolTests(unittest.TestCase):
-    def test_provider_and_optional_harness_protocols_are_closed(self):
+    def test_provider_and_harness_protocols_are_closed(self):
         for kind, filename in (('provider', 'providers/example-provider.json'),
                                ('harness', 'harnesses/example-cli.json')):
             schema = json.loads((REPO / f'schema/{kind}.schema.json').read_text())

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "kind": "harness",
+  "id": "cursor-cli",
+  "display_name": "Cursor CLI",
+  "command": "cursor-agent",
+  "aliases": [
+    "agent"
+  ],
+  "adapter": "detect_only",
+  "protocols": [],
+  "config_style": null,
+  "env": [],
+  "profile_flag": null,
+  "model_flag": "--model",
+  "version_probe": [],
+  "version_match": null,
+  "docs_url": "https://cursor.com/docs/cli/installation",
+  "icon": "cursor",
+  "note": "Detection only: endpoint settings address Cursor's proprietary backend; no model-provider base URL override is documented for this CLI. Official docs name agent; the installed launcher is cursor-agent. --model confirmed via installed binary --help on 2026-11-14. No config profile flag is documented.",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://cursor.com/docs/cli/installation",
+    "https://cursor.com/docs/cli/reference/parameters",
+    "https://cursor.com/docs/cli/reference/authentication",
+    "https://cursor.com/brand"
+  ]
+}

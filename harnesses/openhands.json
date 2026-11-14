@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "kind": "harness",
+  "id": "openhands",
+  "display_name": "OpenHands CLI",
+  "command": "openhands",
+  "aliases": [],
+  "adapter": "detect_only",
+  "protocols": [],
+  "config_style": null,
+  "env": [],
+  "profile_flag": null,
+  "model_flag": null,
+  "version_probe": [],
+  "version_match": null,
+  "docs_url": "https://docs.openhands.dev/openhands/usage/cli/installation",
+  "icon": "openhands",
+  "note": "Detection only: custom-endpoint wire protocol remains unverified. The official OpenHands CLI is no longer actively maintained. Known LLM environment settings require --override-with-envs and are not persisted; no environment roles are exposed here. Persistent settings field names are partly unverified.",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://docs.openhands.dev/openhands/usage/cli/installation",
+    "https://docs.openhands.dev/openhands/usage/cli/command-reference",
+    "https://github.com/OpenHands/OpenHands-CLI/releases",
+    "https://github.com/OpenHands/OpenHands/releases"
+  ]
+}

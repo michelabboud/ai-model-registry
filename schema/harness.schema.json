@@ -186,15 +186,13 @@
           "openai_chat",
           "openai_responses",
           "gemini_generate",
-          "gemini_interactions",
-          "bedrock_converse",
-          "vertex_anthropic",
-          "vertex_gemini"
+          "gemini_interactions"
         ]
       },
-      "minItems": 1,
-      "maxItems": 8,
-      "uniqueItems": true
+      "minItems": 0,
+      "maxItems": 4,
+      "uniqueItems": true,
+      "description": "Verified custom-endpoint wire protocols. Empty if and only if adapter is detect_only."
     }
   },
   "required": [
@@ -205,6 +203,7 @@
     "command",
     "aliases",
     "adapter",
+    "protocols",
     "config_style",
     "env",
     "profile_flag",
