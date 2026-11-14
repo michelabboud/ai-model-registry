@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "kind": "provider",
+  "id": "vertex",
+  "display_name": "Claude on Google Cloud (Google managed)",
+  "base_url": "https://aiplatform.googleapis.com",
+  "protocols": [
+    "vertex_anthropic"
+  ],
+  "auth": "gcp_oauth",
+  "docs_url": "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed"
+  ],
+  "note": "Global endpoint; append /v1/projects/{project}/locations/global/publishers/anthropic/models/MODEL:rawPredict (or :streamRawPredict). OAuth access tokens use Authorization: Bearer. Regional hosts are https://{region}-aiplatform.googleapis.com. Multi-region/regional prices are 10% higher for Sonnet 4.5 and later; older models retain earlier pricing."
+}

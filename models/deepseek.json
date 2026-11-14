@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "kind": "models",
+  "provider": "deepseek",
+  "models": [
+    {
+      "id": "deepseek-flash",
+      "display_name": "DeepSeek V4.1 Flash 1017",
+      "status": "ga",
+      "tier": "low",
+      "context_window": 1000000,
+      "max_output_tokens": 384000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": true,
+      "default": true,
+      "pricing": {
+        "input": 0.3,
+        "output": 1.2,
+        "cache_read": 0.006,
+        "cache_writes": [],
+        "batch_discount_percent": null
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://api-docs.deepseek.com/quick_start/pricing",
+        "https://api-docs.deepseek.com/"
+      ],
+      "note": "Peak rates. Off-peak rates are 50% lower. Peak: Mon-Fri 01:00-04:00 and 06:00-10:00 UTC, excluding Chinese public holidays; all other times off-peak. No per-token cache-write or batch rate is published. K/M limits use decimal token counts. Current version: DeepSeek-V4.1-Flash-1017. Legacy deepseek-v4-flash and deepseek-v4-flash-vision-exp now serve this Flash model, not separate retired versions."
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "display_name": "DeepSeek V4 Pro 0813",
+      "status": "ga",
+      "tier": "high",
+      "context_window": 1000000,
+      "max_output_tokens": 384000,
+      "input_modalities": [
+        "text"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 1.32,
+        "output": 3.96,
+        "cache_read": 0.044,
+        "cache_writes": [],
+        "batch_discount_percent": null
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://api-docs.deepseek.com/quick_start/pricing",
+        "https://api-docs.deepseek.com/"
+      ],
+      "note": "Peak rates. Off-peak rates are 50% lower. Peak: Mon-Fri 01:00-04:00 and 06:00-10:00 UTC, excluding Chinese public holidays; all other times off-peak. No per-token cache-write or batch rate is published. K/M limits use decimal token counts."
+    }
+  ]
+}

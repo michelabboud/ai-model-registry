@@ -19,9 +19,17 @@
         "input": -1,
         "output": 2,
         "cache_read": null,
-        "cache_write_5m": null,
-        "cache_write_1h": 0,
-        "batch_discount_percent": null
+        "batch_discount_percent": null,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": null
+          },
+          {
+            "ttl": "1h",
+            "price": 0
+          }
+        ]
       },
       "note": "Invented example; not vendor data.",
       "verified": "2026-01-01",
@@ -45,9 +53,17 @@
         "input": 2,
         "output": 4,
         "cache_read": null,
-        "cache_write_5m": null,
-        "cache_write_1h": 0,
-        "batch_discount_percent": null
+        "batch_discount_percent": null,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": null
+          },
+          {
+            "ttl": "1h",
+            "price": 0
+          }
+        ]
       },
       "note": "Invented example; not vendor data.",
       "verified": "2026-01-01",

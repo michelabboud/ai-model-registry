@@ -34,7 +34,9 @@ Supported keywords: `$schema`, `$id`, `title`, `description`, `type`, `propertie
    local references, and the supported conditional and negation rules.
 2. The semantic pass checks relationships across records and constraints that need
    parsing or cross-field comparison. Filenames must match IDs; model collections
-   require their provider; model and environment names must be unique. Each model
+   require their provider; model and environment names must be unique. Cache-write
+   TTLs must be unique within each standard or long-context array, even when their
+   prices differ. Each model
    file has exactly one GA probe and one GA default. The probe's known input price
    is no greater than every other GA model's known price. Status controls shutdown
    dates. Verification dates must be real and between 2024-01-01 and today in UTC.
@@ -69,10 +71,28 @@ adapter enum lets consumers decide what integrations they implement. An icon is
 an embedded-asset identifier that the app resolves; this registry ships no icons.
 
 All token prices are USD per million tokens. `null` means unknown or not published;
-zero means free. Cache-read, cache-write-5-minute, and cache-write-1-hour prices
-remain distinct. Long-context prices carry an explicit token threshold. Clients
+zero means free. Cache reads and per-token writes remain distinct. Required
+`cache_writes` is a bounded array (0–6) of closed TTL/price objects; TTL strings
+match `^[1-9][0-9]{0,3}[mh]$`. Uniqueness by TTL is enforced semantically, since
+JSON Schema `uniqueItems` alone would allow a repeated TTL with a different price.
+An empty array means no per-token write rate is published. Optional
+`cache_storage_per_mtok_hour` uses USD per million cached tokens per hour and
+never substitutes for a token-write rate. Both standard and long-context objects
+use this shape; the old `cache_write_5m` and `cache_write_1h` keys are rejected.
+[ADR 0003](docs/adr/0003-cache-pricing-shape.md) records the pre-release change;
+`schema_version` remains 1. Long-context prices carry an explicit token threshold.
+Long-context prices apply when the prompt's input tokens are strictly greater than `threshold_tokens`.
+Normalize over/above/> N and short-context <= N to N; normalize >= N or "N or more"
+to N - 1. K means 1,000 tokens unless the source defines it otherwise.
+Clients
 must not silently coerce `null` to zero, infer unsupported cache prices, or treat a
 missing vendor fact as free service.
+
+Provider protocols and optional harness protocols share a closed vocabulary,
+including `gemini_generate` and `gemini_interactions` for distinct Gemini APIs.
+R1 had no harness protocol field; R2 adds an optional one rather than requiring
+unrelated harness data. Endpoint-specific model restrictions remain in notes;
+there is no per-model protocol override in schema v1.
 
 ## Release format to come
 

@@ -1,0 +1,529 @@
+{
+  "schema_version": 1,
+  "kind": "models",
+  "provider": "vertex",
+  "models": [
+    {
+      "id": "claude-fable-5-2",
+      "display_name": "Claude Fable 5.2",
+      "status": "ga",
+      "tier": "high",
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 8.0,
+        "output": 40.0,
+        "cache_read": 0.2,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": 10.0
+          },
+          {
+            "ttl": "1h",
+            "price": 16.0
+          }
+        ],
+        "batch_discount_percent": 50
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://cloud.google.com/model-garden/partner-models/pricing"
+      ]
+    },
+    {
+      "id": "claude-fable-5-1",
+      "display_name": "Claude Fable 5.1",
+      "status": "ga",
+      "tier": "high",
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 10.0,
+        "output": 50.0,
+        "cache_read": 0.25,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": 12.5
+          },
+          {
+            "ttl": "1h",
+            "price": 20.0
+          }
+        ],
+        "batch_discount_percent": 50
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://cloud.google.com/model-garden/partner-models/pricing"
+      ]
+    },
+    {
+      "id": "claude-fable-5",
+      "display_name": "Claude Fable 5",
+      "status": "ga",
+      "tier": "high",
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 10.0,
+        "output": 50.0,
+        "cache_read": 1.0,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": 12.5
+          },
+          {
+            "ttl": "1h",
+            "price": 20.0
+          }
+        ],
+        "batch_discount_percent": 50
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://cloud.google.com/model-garden/partner-models/pricing"
+      ]
+    },
+    {
+      "id": "claude-opus-5-5",
+      "display_name": "Claude Opus 5.5",
+      "status": "ga",
+      "tier": "high",
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": true,
+      "pricing": {
+        "input": 4.0,
+        "output": 20.0,
+        "cache_read": 0.2,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": 5.0
+          },
+          {
+            "ttl": "1h",
+            "price": 8.0
+          }
+        ],
+        "batch_discount_percent": null
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://cloud.google.com/model-garden/partner-models/pricing"
+      ],
+      "note": "Global prices. Published batch input/output are $2.50/$12.50 per MTok (37.5% off), while batch cache prices are 50% off; one uniform batch discount cannot represent both."
+    },
+    {
+      "id": "claude-opus-5",
+      "display_name": "Claude Opus 5",
+      "status": "ga",
+      "tier": "high",
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 5.0,
+        "output": 25.0,
+        "cache_read": 0.5,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": 6.25
+          },
+          {
+            "ttl": "1h",
+            "price": 10.0
+          }
+        ],
+        "batch_discount_percent": 50
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://cloud.google.com/model-garden/partner-models/pricing"
+      ]
+    },
+    {
+      "id": "claude-opus-4-8",
+      "display_name": "Claude Opus 4.8",
+      "status": "ga",
+      "tier": "high",
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 5.0,
+        "output": 25.0,
+        "cache_read": 0.5,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": 6.25
+          },
+          {
+            "ttl": "1h",
+            "price": 10.0
+          }
+        ],
+        "batch_discount_percent": 50
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://cloud.google.com/model-garden/partner-models/pricing"
+      ]
+    },
+    {
+      "id": "claude-opus-4-7",
+      "display_name": "Claude Opus 4.7",
+      "status": "ga",
+      "tier": "high",
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 5.0,
+        "output": 25.0,
+        "cache_read": 0.5,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": 6.25
+          },
+          {
+            "ttl": "1h",
+            "price": 10.0
+          }
+        ],
+        "batch_discount_percent": 50
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://cloud.google.com/model-garden/partner-models/pricing"
+      ]
+    },
+    {
+      "id": "claude-opus-4-6",
+      "display_name": "Claude Opus 4.6",
+      "status": "ga",
+      "tier": "high",
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 5.0,
+        "output": 25.0,
+        "cache_read": 0.5,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": 6.25
+          },
+          {
+            "ttl": "1h",
+            "price": 10.0
+          }
+        ],
+        "batch_discount_percent": 50
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://cloud.google.com/model-garden/partner-models/pricing"
+      ]
+    },
+    {
+      "id": "claude-opus-4-5@20251101",
+      "display_name": "Claude Opus 4.5",
+      "status": "ga",
+      "tier": "high",
+      "context_window": 200000,
+      "max_output_tokens": 64000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 5.0,
+        "output": 25.0,
+        "cache_read": 0.5,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": 6.25
+          },
+          {
+            "ttl": "1h",
+            "price": null
+          }
+        ],
+        "batch_discount_percent": 50
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://cloud.google.com/model-garden/partner-models/pricing"
+      ],
+      "note": "Global prices. The archived global table does not publish a standard 1h cache-write price; it is unknown here."
+    },
+    {
+      "id": "claude-sonnet-5-5",
+      "display_name": "Claude Sonnet 5.5",
+      "status": "ga",
+      "tier": "medium",
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "cache_read": 0.1,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": 2.5
+          },
+          {
+            "ttl": "1h",
+            "price": 4.0
+          }
+        ],
+        "batch_discount_percent": 50
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://cloud.google.com/model-garden/partner-models/pricing"
+      ]
+    },
+    {
+      "id": "claude-sonnet-5",
+      "display_name": "Claude Sonnet 5",
+      "status": "ga",
+      "tier": "medium",
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "cache_read": 0.2,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": 2.5
+          },
+          {
+            "ttl": "1h",
+            "price": 4.0
+          }
+        ],
+        "batch_discount_percent": 50
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://cloud.google.com/model-garden/partner-models/pricing"
+      ]
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "display_name": "Claude Sonnet 4.6",
+      "status": "ga",
+      "tier": "medium",
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 3.0,
+        "output": 15.0,
+        "cache_read": 0.3,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": 3.75
+          },
+          {
+            "ttl": "1h",
+            "price": 6.0
+          }
+        ],
+        "batch_discount_percent": 50
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://cloud.google.com/model-garden/partner-models/pricing"
+      ]
+    },
+    {
+      "id": "claude-haiku-5-5",
+      "display_name": "Claude Haiku 5.5",
+      "status": "ga",
+      "tier": "low",
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": true,
+      "default": false,
+      "pricing": {
+        "input": 0.1,
+        "output": 0.5,
+        "cache_read": 0.01,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": 0.125
+          },
+          {
+            "ttl": "1h",
+            "price": 0.2
+          }
+        ],
+        "batch_discount_percent": 50,
+        "long_context": {
+          "threshold_tokens": 100000,
+          "input": 0.5,
+          "output": 2.5,
+          "cache_read": 0.05,
+          "cache_writes": [
+            {
+              "ttl": "5m",
+              "price": 0.625
+            },
+            {
+              "ttl": "1h",
+              "price": 1.0
+            }
+          ]
+        }
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://cloud.google.com/model-garden/partner-models/pricing"
+      ]
+    },
+    {
+      "id": "claude-haiku-4-5@20251001",
+      "display_name": "Claude Haiku 4.5",
+      "status": "ga",
+      "tier": "low",
+      "context_window": 200000,
+      "max_output_tokens": 64000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 1.0,
+        "output": 5.0,
+        "cache_read": 0.1,
+        "cache_writes": [
+          {
+            "ttl": "5m",
+            "price": 1.25
+          },
+          {
+            "ttl": "1h",
+            "price": 2.0
+          }
+        ],
+        "batch_discount_percent": 50
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://cloud.google.com/model-garden/partner-models/pricing"
+      ]
+    }
+  ]
+}

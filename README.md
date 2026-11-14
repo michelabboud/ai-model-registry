@@ -6,8 +6,10 @@ gateway, is the first consumer; Genie is a later consumer. This repository conta
 data, schemas, validation tooling, and documentation, with no application runtime,
 credentials, or keys.
 
-**No release exists yet.** R1 supplies the contracts and validation infrastructure;
-provider, model, and harness directories are intentionally empty pending later data tasks.
+**No release exists yet.** Provider and text-model seed data is verified against
+official pages archived on 2026-11-14. Harness data remains a later task. See the
+[source and omission report](docs/reports/2026-11-14-seed-data-sources.md) for the
+inventory, unknown values, endpoint restrictions, and pricing conditions.
 
 ## Data directories
 
@@ -70,8 +72,7 @@ shown filenames. `schema_version` versions the data contract independently of
         "input": 0.1,
         "output": 0.2,
         "cache_read": null,
-        "cache_write_5m": null,
-        "cache_write_1h": null,
+        "cache_writes": [],
         "batch_discount_percent": null
       },
       "verified": "2026-11-14",
@@ -110,8 +111,31 @@ shown filenames. `schema_version` versions the data contract independently of
 ```
 
 A `null` price means not published or unknown. A numeric zero means free; never
-replace an unknown price with zero. All prices use USD per million tokens.
-`long_context`, when present, provides a threshold and the same five token prices.
+replace an unknown price with zero. Token prices use USD per million tokens.
+Required `cache_writes` contains zero to six `{ "ttl": "5m", "price": 1.25 }`
+objects. TTLs match `^[1-9][0-9]{0,3}[mh]$` and are unique within each array.
+An empty array means no per-token cache-write price was published; a null price
+means a known TTL with an unknown rate. Preserve the vendor's duration: Anthropic
+5m/1h and OpenAI 30m/12h are different offers. The old fixed cache-write fields
+are rejected. Optional `cache_storage_per_mtok_hour` is USD per million cached
+tokens per hour, separate from cache access or writes. Omission or null means
+unknown; zero means explicitly free.
+
+`batch_discount_percent` summarizes a published batch input/output discount.
+It does not establish batch availability or a discount for every cache category,
+storage tariff, or context band. Read the model notes: some batch cache prices
+remain Standard, are rounded, or are unpublished. A null discount may also flag
+an inconsistent batch tariff that cannot be summarized by one percentage.
+
+`long_context`, when present, provides `threshold_tokens` and the same input,
+output, cache-read, cache-write array, and optional hourly storage prices.
+Long-context prices apply when the prompt's input tokens are strictly greater than `threshold_tokens`.
+Source thresholds are normalized to this strict comparison: over/above/> N and
+short-context <= N become N; >= N or "N or more" become N - 1.
+K means 1,000 tokens unless the source defines it otherwise.
+Long-context pricing does not carry a second batch discount. Notes retain other
+vendor conditions that schema v1 cannot express. See
+[the cache-pricing decision](docs/adr/0003-cache-pricing-shape.md).
 A deprecated model requires a `shutdown` date; other statuses forbid that field.
 Each model file has exactly one GA probe and one GA default. The probe must have a
 known input price no greater than any other GA model's known input price.
@@ -121,6 +145,21 @@ supplies API keys, tokens, gateway endpoints, and other local values. Commands a
 bare names, adapters come from a closed enum, and dangerous environment names are
 rejected in both schemas and the semantic validator. Icons are embedded-asset IDs
 resolved by the app, not files shipped by the registry.
+
+Providers declare supported `protocols`. Harnesses may optionally declare
+`protocols` using the same closed enum. `gemini_generate` describes generateContent;
+`gemini_interactions` describes the separate Interactions API. A provider-level
+protocol list is not a claim that every model supports every endpoint; read model
+notes for exceptions, including runtime-only Bedrock models.
+
+## Tiers
+
+Tiers describe vendor family positioning, not measured quality or interchangeable
+capability. `low` is the small/fast family (Haiku, Luna, Flash, Lite, Mini, Nano,
+and `-flash` variants); `high` is the flagship family (Opus, Fable, Astra, Pro,
+and the vendor's top Grok); `medium` is the rest. Small/fast markers take priority
+over a `pro` suffix on that small family. OpenRouter entries inherit their matched
+vendor model's tier. Neither price nor preview status alone determines tier.
 
 ## Validate locally
 

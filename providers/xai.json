@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "kind": "provider",
+  "id": "xai",
+  "display_name": "xAI",
+  "base_url": "https://api.x.ai/v1",
+  "protocols": [
+    "openai_chat",
+    "openai_responses"
+  ],
+  "auth": "bearer",
+  "docs_url": "https://docs.x.ai/developers/quickstart",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://docs.x.ai/developers/quickstart",
+    "https://docs.x.ai/docs/models"
+  ],
+  "note": "Grok 4.7 is recommended for code and chat. Quickstart shows Responses; archived models HTML links Chat Completions (Legacy), so both protocol families are listed. Model aliases are not duplicate records."
+}

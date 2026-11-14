@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "kind": "models",
+  "provider": "xai",
+  "models": [
+    {
+      "id": "grok-4.7",
+      "display_name": "grok-4.7",
+      "status": "ga",
+      "tier": "high",
+      "context_window": 500000,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": true,
+      "pricing": {
+        "input": 2.0,
+        "output": 6.0,
+        "cache_read": 0.5,
+        "cache_writes": [],
+        "batch_discount_percent": 20,
+        "long_context": {
+          "threshold_tokens": 199999,
+          "input": 4.0,
+          "output": 12.0,
+          "cache_read": 1.0,
+          "cache_writes": []
+        }
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://docs.x.ai/docs/models"
+      ],
+      "note": "Standard text prices; higher rate applies to all request tokens when prompt reaches 200,000 tokens. Archived metadata supplies text/image modalities and context limit, but no maximum output token count. Cache-write rates are not published."
+    },
+    {
+      "id": "grok-4.6",
+      "display_name": "grok-4.6",
+      "status": "ga",
+      "tier": "medium",
+      "context_window": 500000,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 2.0,
+        "output": 6.0,
+        "cache_read": 0.5,
+        "cache_writes": [],
+        "batch_discount_percent": 20,
+        "long_context": {
+          "threshold_tokens": 199999,
+          "input": 4.0,
+          "output": 12.0,
+          "cache_read": 1.0,
+          "cache_writes": []
+        }
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://docs.x.ai/docs/models"
+      ],
+      "note": "Standard text prices; higher rate applies to all request tokens when prompt reaches 200,000 tokens. Archived metadata supplies text/image modalities and context limit, but no maximum output token count. Cache-write rates are not published."
+    },
+    {
+      "id": "grok-4.5",
+      "display_name": "grok-4.5",
+      "status": "ga",
+      "tier": "medium",
+      "context_window": 500000,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 2.0,
+        "output": 6.0,
+        "cache_read": 0.3,
+        "cache_writes": [],
+        "batch_discount_percent": 20,
+        "long_context": {
+          "threshold_tokens": 199999,
+          "input": 4.0,
+          "output": 12.0,
+          "cache_read": 0.6,
+          "cache_writes": []
+        }
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://docs.x.ai/docs/models"
+      ],
+      "note": "Standard text prices; higher rate applies to all request tokens when prompt reaches 200,000 tokens. Archived metadata supplies text/image modalities and context limit, but no maximum output token count. Cache-write rates are not published."
+    },
+    {
+      "id": "grok-4.3",
+      "display_name": "grok-4.3",
+      "status": "ga",
+      "tier": "medium",
+      "context_window": 1000000,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache_read": 0.2,
+        "cache_writes": [],
+        "batch_discount_percent": 20,
+        "long_context": {
+          "threshold_tokens": 199999,
+          "input": 2.5,
+          "output": 5.0,
+          "cache_read": 0.4,
+          "cache_writes": []
+        }
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://docs.x.ai/docs/models"
+      ],
+      "note": "Standard text prices; higher rate applies to all request tokens when prompt reaches 200,000 tokens. Archived metadata supplies text/image modalities and context limit, but no maximum output token count. Cache-write rates are not published."
+    },
+    {
+      "id": "grok-4.20-0309-reasoning",
+      "display_name": "grok-4.20-0309-reasoning",
+      "status": "ga",
+      "tier": "medium",
+      "context_window": 1000000,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache_read": 0.2,
+        "cache_writes": [],
+        "batch_discount_percent": 20,
+        "long_context": {
+          "threshold_tokens": 199999,
+          "input": 2.5,
+          "output": 5.0,
+          "cache_read": 0.4,
+          "cache_writes": []
+        }
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://docs.x.ai/docs/models"
+      ],
+      "note": "Standard text prices; higher rate applies to all request tokens when prompt reaches 200,000 tokens. Archived metadata supplies text/image modalities and context limit, but no maximum output token count. Cache-write rates are not published."
+    },
+    {
+      "id": "grok-4.20-0309-non-reasoning",
+      "display_name": "grok-4.20-0309-non-reasoning",
+      "status": "ga",
+      "tier": "medium",
+      "context_window": 1000000,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache_read": 0.2,
+        "cache_writes": [],
+        "batch_discount_percent": 20,
+        "long_context": {
+          "threshold_tokens": 199999,
+          "input": 2.5,
+          "output": 5.0,
+          "cache_read": 0.4,
+          "cache_writes": []
+        }
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://docs.x.ai/docs/models"
+      ],
+      "note": "Standard text prices; higher rate applies to all request tokens when prompt reaches 200,000 tokens. Archived metadata supplies text/image modalities and context limit, but no maximum output token count. Cache-write rates are not published."
+    },
+    {
+      "id": "grok-build-0.1",
+      "display_name": "grok-build-0.1",
+      "status": "ga",
+      "tier": "medium",
+      "context_window": 256000,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": true,
+      "default": false,
+      "pricing": {
+        "input": 1.0,
+        "output": 2.0,
+        "cache_read": 0.2,
+        "cache_writes": [],
+        "batch_discount_percent": null,
+        "long_context": {
+          "threshold_tokens": 199999,
+          "input": 2.0,
+          "output": 4.0,
+          "cache_read": 0.4,
+          "cache_writes": []
+        }
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://docs.x.ai/docs/models"
+      ],
+      "note": "Standard text prices; higher rate applies to all request tokens when prompt reaches 200,000 tokens. Archived metadata supplies text/image modalities and context limit, but no maximum output token count. Cache-write rates are not published. Metadata includes a discount value but does not establish Batch enablement; discount remains unknown."
+    },
+    {
+      "id": "grok-4.20-multi-agent-0309",
+      "display_name": "grok-4.20-multi-agent-0309",
+      "status": "ga",
+      "tier": "medium",
+      "context_window": 1000000,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache_read": 0.2,
+        "cache_writes": [],
+        "batch_discount_percent": 20,
+        "long_context": {
+          "threshold_tokens": 199999,
+          "input": 2.5,
+          "output": 5.0,
+          "cache_read": 0.4,
+          "cache_writes": []
+        }
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://docs.x.ai/docs/models"
+      ],
+      "note": "Standard text prices; higher rate applies to all request tokens when prompt reaches 200,000 tokens. Archived metadata supplies text/image modalities and context limit, but no maximum output token count. Cache-write rates are not published."
+    }
+  ]
+}

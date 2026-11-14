@@ -176,6 +176,25 @@
       },
       "minItems": 1,
       "maxItems": 20
+    },
+    "protocols": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "anthropic_messages",
+          "openai_chat",
+          "openai_responses",
+          "gemini_generate",
+          "gemini_interactions",
+          "bedrock_converse",
+          "vertex_anthropic",
+          "vertex_gemini"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 8,
+      "uniqueItems": true
     }
   },
   "required": [

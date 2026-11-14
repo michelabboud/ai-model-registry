@@ -114,7 +114,7 @@ class ValidatorTests(unittest.TestCase):
         self.assertEqual(self.run_validator().returncode, 0)
 
     def test_negative_prices(self):
-        for key in ('input', 'output', 'cache_read', 'cache_write_5m', 'cache_write_1h'):
+        for key in ('input', 'output', 'cache_read'):
             with self.subTest(key=key):
                 self.change(MODELS, lambda d: d['models'][0]['pricing'].__setitem__(key, -1))
                 self.assert_bad(MODELS, '/models/0/pricing/' + key)
@@ -122,7 +122,7 @@ class ValidatorTests(unittest.TestCase):
 
     def test_long_context(self):
         prices = dict(threshold_tokens=100000, input=2, output=4, cache_read=None,
-                      cache_write_5m=0, cache_write_1h=None)
+                      cache_writes=[{'ttl': '5m', 'price': 0}, {'ttl': '1h', 'price': None}])
         self.change(MODELS, lambda d: d['models'][0]['pricing'].__setitem__('long_context', prices))
         self.assertEqual(self.run_validator().returncode, 0)
         self.change(MODELS, lambda d: d['models'][0]['pricing']['long_context'].__setitem__('input', -1))

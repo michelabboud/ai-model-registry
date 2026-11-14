@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "kind": "provider",
+  "id": "anthropic",
+  "display_name": "Anthropic",
+  "base_url": "https://api.anthropic.com",
+  "protocols": [
+    "anthropic_messages"
+  ],
+  "auth": "bearer",
+  "docs_url": "https://platform.claude.com/docs/en/api/overview",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://platform.claude.com/docs/en/api/overview"
+  ],
+  "note": "Authorization: Bearer is preferred; x-api-key remains a documented legacy fallback. Messages uses /v1/messages."
+}

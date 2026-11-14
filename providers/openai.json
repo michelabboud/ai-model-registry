@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "kind": "provider",
+  "id": "openai",
+  "display_name": "OpenAI",
+  "base_url": "https://api.openai.com/v1",
+  "protocols": [
+    "openai_responses",
+    "openai_chat"
+  ],
+  "auth": "bearer",
+  "docs_url": "https://developers.openai.com/api/reference/overview",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://developers.openai.com/api/reference/overview",
+    "https://developers.openai.com/api/docs/pricing"
+  ],
+  "note": "Default is the registry balance-of-cost-and-quality selection. Prices use Standard mode, excluding regional/FedRAMP uplifts and tool charges."
+}

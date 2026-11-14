@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "kind": "provider",
+  "id": "bedrock",
+  "display_name": "Amazon Bedrock",
+  "base_url": "https://bedrock-mantle.{region}.api.aws/anthropic",
+  "protocols": [
+    "anthropic_messages"
+  ],
+  "auth": "aws_sigv4",
+  "docs_url": "https://platform.claude.com/docs/en/build-with-claude/claude-in-amazon-bedrock",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://platform.claude.com/docs/en/build-with-claude/claude-in-amazon-bedrock",
+    "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/20261109224312/us-east-1/index.json"
+  ],
+  "note": "Messages uses /v1/messages and SigV4 service bedrock-mantle; bearer tokens are also supported. Converse/InvokeModel use a separate bedrock-runtime endpoint. Fable 5.2 is runtime-only and cannot use this mantle base URL. Prices select global standard on-demand rows from the us-east-1 catalog."
+}

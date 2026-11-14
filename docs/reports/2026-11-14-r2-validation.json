@@ -1,0 +1,136 @@
+{
+  "git_head": "45a24db0e21211e415865af00e7f89786b31f432",
+  "candidate_sha256": "2c5942c6286c4e703b43594c0b87f6ad1c22652abbfcfd3d193819e62d5ec464",
+  "files": {
+    "models/anthropic.json": "9150f69f74790d2cb563a9bdfa1c768b293cefd63431c7219a5934ca1622379c",
+    "models/bedrock.json": "1d2c529db86ec670f1536e854eab164969204f7074c6e621001619f453ce2a60",
+    "models/deepseek.json": "5ec1dff4b259a24b1506d24074bc4e57ad49bbd2e3f133ad21f87d9b46a70ed1",
+    "models/gemini.json": "62c53b7ae9ae5e6f1049fb5e375fa2d74f1c0dc3f43411038f5be16b81bd7acc",
+    "models/openai.json": "18fff967014fe72320d02d97a63138885fa44c8cf6bc1499fff296b7be8c05ee",
+    "models/openrouter.json": "26f9521169df2dfc969d6403f5bc917f8b7800380e4551ecfdc0195788c6eddb",
+    "models/vertex.json": "c22c9876befd6be03d5a70b413ac9d43c710954a6008af1544be06234d4b50a2",
+    "models/xai.json": "1b909604af5c96218b504ee4e03749eb7fb3977a329e718a01b40975392ba7af",
+    "models/zai.json": "22060f4da79eae7c841ea6cdf66057b7f567d766b6411a382c758e7852564179",
+    "providers/anthropic.json": "209668ea9d13941e7d971aa0e3f37e877cc516fdc2b4bd275ec26114171c206a",
+    "providers/bedrock.json": "2b7ff099d6f355a4a0f7b0b51ee9ba68c9f143bd1842011ac07a9a81baa29a34",
+    "providers/deepseek.json": "71949701c15a5fd3ae5368560af79bde810e9220b713dddfecbf37bdd7a88f8b",
+    "providers/gemini.json": "7826cc90aefa79b1dde8bd7672cac101f44ba82055444dbad0566525bcadb95c",
+    "providers/openai.json": "f2398f8bf6858b273b591ca7d6e3c5a3f63bef13b4079628f355fe24d5629de5",
+    "providers/openrouter.json": "9cb2aa4201f6b36dc62ad6c8d2cb30ee95d877c6468c23031f71d8161a3c3117",
+    "providers/vertex.json": "a386a11f869d42237f54f3d70b8c02ff656be33245e8fed595a10eb3379fb4b3",
+    "providers/xai.json": "d3319f84459c7fbbbfb34b18e90838cb95cc23400bb758f7434ea84f557a8f62",
+    "providers/zai.json": "1531046bc3f8f2e9c46beb2777653fee586524f16928906c4fe35d41aa36b4a2",
+    "schema/harness.schema.json": "8d22baea90b3c5ee9646d917a337a86f2e4d9c4c1d5fa56a980de64f11944dde",
+    "schema/models.schema.json": "45536a5d9af4f5cfe44de23ed0ffaa584f9f49977f716e7d50c3f116f2d1b43d",
+    "schema/provider.schema.json": "4726a2d75d242430ca459199ca076dcbb8aae4493bebeaea9abec82a3c384281",
+    "scripts/validate.py": "4cd1c89cc5a5bd9b2d8b2368f8da6ecfdcb315162169dc9796f6db2eab4fea05",
+    "tests/fixtures/invalid/command-path/expected.json": "957e968223208c497db0f72facb634c12227732ace2f0280c4526c85b270156d",
+    "tests/fixtures/invalid/command-path/harnesses/example-cli.json": "a35519c3fee3fd2222e3e82575efaeff3fb50f10d4f135fadbebbfa7b5e5c9e6",
+    "tests/fixtures/invalid/command-path/models/example-provider.json": "803f6673af032e9f9e60c6a97a9242b2cc4d4471337e6134bfe3f84df8912a23",
+    "tests/fixtures/invalid/command-path/providers/example-provider.json": "59b925c1a778c7b8f869b682927c6e7e7a7055cab9758565e7a5e4b0e823a227",
+    "tests/fixtures/invalid/http-url/expected.json": "d362a4e6aa511fdef46b2c6a2b38804779b57ef24cfe4fda2ceea34688c27c1a",
+    "tests/fixtures/invalid/http-url/harnesses/example-cli.json": "26ff1a6d5dc08c743e76a2a25ee674cba4acd2edfdab29d609ebe0cee12c1f49",
+    "tests/fixtures/invalid/http-url/models/example-provider.json": "803f6673af032e9f9e60c6a97a9242b2cc4d4471337e6134bfe3f84df8912a23",
+    "tests/fixtures/invalid/http-url/providers/example-provider.json": "736f9b1dbd9be239373bf13c05054814d8f77a45b9d5d12ee9012c27a68df70e",
+    "tests/fixtures/invalid/missing-verified/expected.json": "d285d89fbf46aca4781ad30c81ef8da2c56edcfa69b7a88ae23a54b0f31ae087",
+    "tests/fixtures/invalid/missing-verified/harnesses/example-cli.json": "01c44b9bc4312620d93802bdcf8e19fb091de0d359c1dff519075859fe4e4cd1",
+    "tests/fixtures/invalid/missing-verified/models/example-provider.json": "803f6673af032e9f9e60c6a97a9242b2cc4d4471337e6134bfe3f84df8912a23",
+    "tests/fixtures/invalid/missing-verified/providers/example-provider.json": "59b925c1a778c7b8f869b682927c6e7e7a7055cab9758565e7a5e4b0e823a227",
+    "tests/fixtures/invalid/negative-price/expected.json": "48986589989c7424573db95644c599855777b061b7d9efd9b9a794f8606d46a0",
+    "tests/fixtures/invalid/negative-price/harnesses/example-cli.json": "26ff1a6d5dc08c743e76a2a25ee674cba4acd2edfdab29d609ebe0cee12c1f49",
+    "tests/fixtures/invalid/negative-price/models/example-provider.json": "fd5284cbd0b3033081f9634e9000401564a6654440c9b55f49e2b75b1d57538e",
+    "tests/fixtures/invalid/negative-price/providers/example-provider.json": "59b925c1a778c7b8f869b682927c6e7e7a7055cab9758565e7a5e4b0e823a227",
+    "tests/fixtures/invalid/two-probes/expected.json": "b78f2c820fa49123d29a7fa63dca721a0724de8b145d1d8c634fa12a975d6750",
+    "tests/fixtures/invalid/two-probes/harnesses/example-cli.json": "26ff1a6d5dc08c743e76a2a25ee674cba4acd2edfdab29d609ebe0cee12c1f49",
+    "tests/fixtures/invalid/two-probes/models/example-provider.json": "8d05438e93f16382c84831e5fa538ccbdaef875d67780a5651a9edcff27e1d36",
+    "tests/fixtures/invalid/two-probes/providers/example-provider.json": "59b925c1a778c7b8f869b682927c6e7e7a7055cab9758565e7a5e4b0e823a227",
+    "tests/fixtures/invalid/unknown-key/expected.json": "632671c308b7bbaf7a0369f73c70eea44cf7fd5e2c9ba02996821a50e5845014",
+    "tests/fixtures/invalid/unknown-key/harnesses/example-cli.json": "26ff1a6d5dc08c743e76a2a25ee674cba4acd2edfdab29d609ebe0cee12c1f49",
+    "tests/fixtures/invalid/unknown-key/models/example-provider.json": "803f6673af032e9f9e60c6a97a9242b2cc4d4471337e6134bfe3f84df8912a23",
+    "tests/fixtures/invalid/unknown-key/providers/example-provider.json": "3948fc9a63bb5ea0b4c246e0a4d8d3ec58f8d36655367061ac74212782da167e",
+    "tests/fixtures/valid/harnesses/example-cli.json": "26ff1a6d5dc08c743e76a2a25ee674cba4acd2edfdab29d609ebe0cee12c1f49",
+    "tests/fixtures/valid/models/example-provider.json": "803f6673af032e9f9e60c6a97a9242b2cc4d4471337e6134bfe3f84df8912a23",
+    "tests/fixtures/valid/providers/example-provider.json": "59b925c1a778c7b8f869b682927c6e7e7a7055cab9758565e7a5e4b0e823a227",
+    "tests/test_cache_pricing.py": "1c3de1e9bed6a088e23f3328289e07511ea261929d5be73956a869619ca69167",
+    "tests/test_validate.py": "93338aa8bdb5fc7c2839e57f410903a0b892103b9c5638a0c9b7e3e892ecc533"
+  },
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "validator": {
+    "command": "python3 scripts/validate.py",
+    "exit_status": 0,
+    "output": "18 files checked; 0 problems; clean\n"
+  },
+  "unittest": {
+    "command": "python3 -m unittest discover -s tests -v",
+    "exit_status": 0,
+    "tests": 80,
+    "raw_receipt": "/tmp/r2-final-unittest-1.txt",
+    "scope": "schemas, validator, fixtures, tests; unchanged during run"
+  },
+  "summary": [
+    {
+      "provider": "anthropic",
+      "model_count": 15,
+      "probe": "claude-haiku-5-5",
+      "default": "claude-opus-5-5",
+      "scalar_nulls": 0
+    },
+    {
+      "provider": "bedrock",
+      "model_count": 11,
+      "probe": "anthropic.claude-haiku-5-5",
+      "default": "anthropic.claude-opus-5-5",
+      "scalar_nulls": 9
+    },
+    {
+      "provider": "deepseek",
+      "model_count": 2,
+      "probe": "deepseek-flash",
+      "default": "deepseek-flash",
+      "scalar_nulls": 2
+    },
+    {
+      "provider": "gemini",
+      "model_count": 15,
+      "probe": "gemini-3.1-flash-lite",
+      "default": "gemini-3.8-flash",
+      "scalar_nulls": 38
+    },
+    {
+      "provider": "openai",
+      "model_count": 31,
+      "probe": "gpt-5-nano",
+      "default": "gpt-6.1-sol",
+      "scalar_nulls": 73
+    },
+    {
+      "provider": "openrouter",
+      "model_count": 134,
+      "probe": "z-ai/glm-5.2",
+      "default": "openai/gpt-6.1-sol",
+      "scalar_nulls": 109
+    },
+    {
+      "provider": "vertex",
+      "model_count": 14,
+      "probe": "claude-haiku-5-5",
+      "default": "claude-opus-5-5",
+      "scalar_nulls": 2
+    },
+    {
+      "provider": "xai",
+      "model_count": 8,
+      "probe": "grok-build-0.1",
+      "default": "grok-4.7",
+      "scalar_nulls": 9
+    },
+    {
+      "provider": "zai",
+      "model_count": 21,
+      "probe": "GLM-4.7-Flash",
+      "default": "glm-5.3",
+      "scalar_nulls": 64
+    }
+  ],
+  "source_archive_hash_check": "All official source bytes match the initial independent-review snapshot."
+}

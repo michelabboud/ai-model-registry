@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "kind": "provider",
+  "id": "zai",
+  "display_name": "Z.ai",
+  "base_url": "https://api.z.ai/api/paas/v4",
+  "protocols": [
+    "openai_chat"
+  ],
+  "auth": "bearer",
+  "docs_url": "https://docs.z.ai/guides/overview/quick-start",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://docs.z.ai/guides/overview/quick-start",
+    "https://docs.z.ai/guides/overview/pricing",
+    "https://docs.z.ai/api-reference/llm/chat-completion"
+  ],
+  "note": "Model IDs are lowercase API identifiers confirmed by the Chat Completions model enums; display names retain pricing-table labels. glm-5.3 is the flagship default and glm-5.3-flash is the cheapest retained GA probe. Cached storage marked limited-time free is recorded as zero, not as a cache-write rate."
+}

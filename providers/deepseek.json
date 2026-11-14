@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "kind": "provider",
+  "id": "deepseek",
+  "display_name": "DeepSeek",
+  "base_url": "https://api.deepseek.com",
+  "protocols": [
+    "openai_chat",
+    "openai_responses"
+  ],
+  "auth": "bearer",
+  "docs_url": "https://api-docs.deepseek.com/",
+  "verified": "2026-11-14",
+  "sources": [
+    "https://api-docs.deepseek.com/",
+    "https://api-docs.deepseek.com/quick_start/pricing"
+  ],
+  "note": "Anthropic-compatible API uses the separate https://api.deepseek.com/anthropic base, so it is not claimed for this base URL. Legacy deepseek-v4-flash and deepseek-v4-flash-vision-exp names route to deepseek-flash; the old models are retired."
+}

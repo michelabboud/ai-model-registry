@@ -1,0 +1,449 @@
+{
+  "schema_version": 1,
+  "kind": "models",
+  "provider": "gemini",
+  "models": [
+    {
+      "id": "gemini-4-carbon",
+      "display_name": "Gemini 4 Carbon",
+      "status": "ga",
+      "tier": "high",
+      "context_window": 1000000,
+      "max_output_tokens": 1000000,
+      "input_modalities": [
+        "text",
+        "image",
+        "audio",
+        "video",
+        "pdf"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "cache_read": 0.1,
+        "cache_writes": [],
+        "batch_discount_percent": 50
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/models",
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ],
+      "note": "Paid Standard text-token prices; free-tier allowances and tool charges are separate. Cache writes are not priced per token in the archive. Promotional input/output/cache-read 2/10/0.10 through 2026-11-30; 4/20/0.20 from 2026-12-01. Implicit caching only. Models page lists max output 64K / 1M; this field records the published maximum."
+    },
+    {
+      "id": "gemini-4-argon",
+      "display_name": "Gemini 4 Argon",
+      "status": "ga",
+      "tier": "medium",
+      "context_window": 1000000,
+      "max_output_tokens": 1000000,
+      "input_modalities": [
+        "text",
+        "image",
+        "audio",
+        "video",
+        "pdf"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "cache_read": 0.1,
+        "cache_writes": [],
+        "batch_discount_percent": 50
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/models",
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ],
+      "note": "Paid Standard text-token prices; free-tier allowances and tool charges are separate. Cache writes are not priced per token in the archive. Promotional input/output/cache-read 2/10/0.10 through 2026-11-30; 4/20/0.20 from 2026-12-01. Implicit caching only. Models page lists max output 64K / 1M; this field records the published maximum."
+    },
+    {
+      "id": "gemini-4-hydrogen",
+      "display_name": "Gemini 4 Hydrogen",
+      "status": "ga",
+      "tier": "low",
+      "context_window": 1000000,
+      "max_output_tokens": 1000000,
+      "input_modalities": [
+        "text",
+        "image",
+        "audio",
+        "video",
+        "pdf"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 1.5,
+        "output": 7.5,
+        "cache_read": 0.075,
+        "cache_writes": [],
+        "batch_discount_percent": 50
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/models",
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ],
+      "note": "Paid Standard text-token prices; free-tier allowances and tool charges are separate. Cache writes are not priced per token in the archive. Implicit caching only. Models page lists max output 64K / 1M; this field records the published maximum."
+    },
+    {
+      "id": "gemini-3.8-flash",
+      "display_name": "Gemini 3.8 Flash",
+      "status": "ga",
+      "tier": "low",
+      "context_window": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "probe": false,
+      "default": true,
+      "pricing": {
+        "input": 0.75,
+        "output": 3.75,
+        "cache_read": 0.075,
+        "cache_writes": [],
+        "batch_discount_percent": 50,
+        "cache_storage_per_mtok_hour": 0.5
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/models",
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ],
+      "note": "Paid Standard text-token prices; free-tier allowances and tool charges are separate. Cache writes are not priced per token in the archive. Promotional rates through 2026-12-31; from 2027-01-01 input/output/cache-read/storage become 1.50/7.50/0.15/1.00. Batch leaves the Standard hourly storage rate unchanged."
+    },
+    {
+      "id": "gemini-3.6-flash",
+      "display_name": "Gemini 3.6 Flash",
+      "status": "ga",
+      "tier": "low",
+      "context_window": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 0.75,
+        "output": 3.75,
+        "cache_read": 0.075,
+        "cache_writes": [],
+        "batch_discount_percent": 50,
+        "cache_storage_per_mtok_hour": 0.5
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/models",
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ],
+      "note": "Paid Standard text-token prices; free-tier allowances and tool charges are separate. Cache writes are not priced per token in the archive. Promotional rates through 2026-12-31; from 2027-01-01 input/output/cache-read/storage become 1.50/7.50/0.15/1.00. Batch leaves the Standard hourly storage rate unchanged."
+    },
+    {
+      "id": "gemini-3.5-flash-lite",
+      "display_name": "Gemini 3.5 Flash-Lite",
+      "status": "ga",
+      "tier": "low",
+      "context_window": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text",
+        "image",
+        "audio",
+        "video"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 0.3,
+        "output": 2.5,
+        "cache_read": 0.03,
+        "cache_writes": [],
+        "batch_discount_percent": 50,
+        "cache_storage_per_mtok_hour": 1.0
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/models",
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ],
+      "note": "Paid Standard text-token prices; free-tier allowances and tool charges are separate. Cache writes are not priced per token in the archive. Batch leaves the Standard hourly storage rate unchanged."
+    },
+    {
+      "id": "gemini-3.1-flash-lite",
+      "display_name": "Gemini 3.1 Flash-Lite",
+      "status": "ga",
+      "tier": "low",
+      "context_window": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text",
+        "image",
+        "audio",
+        "video"
+      ],
+      "probe": true,
+      "default": false,
+      "pricing": {
+        "input": 0.25,
+        "output": 1.5,
+        "cache_read": 0.025,
+        "cache_writes": [],
+        "batch_discount_percent": 50,
+        "cache_storage_per_mtok_hour": 1.0
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/models",
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ],
+      "note": "Paid Standard text-token prices; free-tier allowances and tool charges are separate. Cache writes are not priced per token in the archive. Audio input/cache-read rates differ; tuple is text only. Batch cached storage is $0.50/MTok/hour versus Standard $1.00; the input/output discount does not define storage pricing."
+    },
+    {
+      "id": "gemini-3.1-pro-preview",
+      "display_name": "Gemini 3.1 Pro Preview",
+      "status": "preview",
+      "tier": "high",
+      "context_window": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 2.0,
+        "output": 12.0,
+        "cache_read": 0.2,
+        "cache_writes": [],
+        "batch_discount_percent": 50,
+        "cache_storage_per_mtok_hour": 4.5,
+        "long_context": {
+          "threshold_tokens": 200000,
+          "input": 4.0,
+          "output": 18.0,
+          "cache_read": 0.4,
+          "cache_writes": []
+        }
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/models",
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ],
+      "note": "Paid Standard text-token prices; free-tier allowances and tool charges are separate. Cache writes are not priced per token in the archive. Batch discount applies to input/output; cached input remains Standard."
+    },
+    {
+      "id": "gemini-3-flash-preview",
+      "display_name": "Gemini 3 Flash Preview",
+      "status": "preview",
+      "tier": "low",
+      "context_window": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text",
+        "image",
+        "audio",
+        "video"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 0.5,
+        "output": 3.0,
+        "cache_read": 0.05,
+        "cache_writes": [],
+        "batch_discount_percent": 50,
+        "cache_storage_per_mtok_hour": 1.0
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/models",
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ],
+      "note": "Paid Standard text-token prices; free-tier allowances and tool charges are separate. Cache writes are not priced per token in the archive. Audio input/cache-read rates differ; tuple is text only. Batch discount applies to input/output; cached input remains Standard."
+    },
+    {
+      "id": "gemini-robotics-er-2-preview",
+      "display_name": "Gemini Robotics ER 2 Preview",
+      "status": "preview",
+      "tier": "medium",
+      "context_window": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text",
+        "image",
+        "audio",
+        "video"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 1.0,
+        "output": 5.0,
+        "cache_read": 0.1,
+        "cache_writes": [],
+        "batch_discount_percent": 50,
+        "cache_storage_per_mtok_hour": 0.5
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/models",
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ],
+      "note": "Paid Standard text-token prices; free-tier allowances and tool charges are separate. Cache writes are not priced per token in the archive. Promotional rates through 2026-12-31; input/output double from 2027-01-01. Cache read/storage also double from 2027-01-01. Batch leaves the Standard hourly storage rate unchanged."
+    },
+    {
+      "id": "gemini-robotics-er-2-streaming-preview",
+      "display_name": "Gemini Robotics ER 2 Streaming Preview",
+      "status": "preview",
+      "tier": "medium",
+      "context_window": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text",
+        "image",
+        "audio",
+        "video"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 1.0,
+        "output": 5.0,
+        "cache_read": null,
+        "cache_writes": [],
+        "batch_discount_percent": null
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/models",
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ],
+      "note": "Paid Standard text-token prices; free-tier allowances and tool charges are separate. Cache writes are not priced per token in the archive. Promotional rates through 2026-12-31; input/output double from 2027-01-01. Live API only; not callable through the listed provider generation/Interactions adapters."
+    },
+    {
+      "id": "gemini-3.1-pro-preview-customtools",
+      "display_name": "Gemini 3.1 Pro Preview Custom Tools",
+      "status": "preview",
+      "tier": "high",
+      "context_window": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": 2.0,
+        "output": 12.0,
+        "cache_read": 0.2,
+        "cache_writes": [],
+        "batch_discount_percent": 50,
+        "cache_storage_per_mtok_hour": 4.5,
+        "long_context": {
+          "threshold_tokens": 200000,
+          "input": 4.0,
+          "output": 18.0,
+          "cache_read": 0.4,
+          "cache_writes": []
+        }
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/models",
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ],
+      "note": "Custom Tools endpoint explicitly shares Gemini 3.1 Pro Preview pricing. Paid Standard text prices; input/output Batch discount 50%, cache remains Standard. Unknown limits/modalities beyond text are not inferred."
+    },
+    {
+      "id": "deep-research-preview-04-2026",
+      "display_name": "Gemini Deep Research",
+      "status": "preview",
+      "tier": "medium",
+      "context_window": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cache_read": null,
+        "cache_writes": [],
+        "batch_discount_percent": null
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/models",
+        "https://ai.google.dev/gemini-api/docs/pricing",
+        "https://ai.google.dev/gemini-api/docs/quickstart"
+      ],
+      "note": "Managed agent ID listed on models page; Interactions API agent execution is required. Inference is billed at underlying Gemini rates plus tools, without a standalone model token-price tuple in the archive. Context/output limits and input modalities beyond text are not established."
+    },
+    {
+      "id": "deep-research-max-preview-04-2026",
+      "display_name": "Gemini Deep Research Max",
+      "status": "preview",
+      "tier": "medium",
+      "context_window": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cache_read": null,
+        "cache_writes": [],
+        "batch_discount_percent": null
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/models",
+        "https://ai.google.dev/gemini-api/docs/pricing",
+        "https://ai.google.dev/gemini-api/docs/quickstart"
+      ],
+      "note": "Managed agent ID listed on models page; Interactions API agent execution is required. Inference is billed at underlying Gemini rates plus tools, without a standalone model token-price tuple in the archive. Context/output limits and input modalities beyond text are not established."
+    },
+    {
+      "id": "antigravity-preview-09-2026",
+      "display_name": "Antigravity Agent",
+      "status": "preview",
+      "tier": "medium",
+      "context_window": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "probe": false,
+      "default": false,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cache_read": null,
+        "cache_writes": [],
+        "batch_discount_percent": null
+      },
+      "verified": "2026-11-14",
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/models",
+        "https://ai.google.dev/gemini-api/docs/pricing",
+        "https://ai.google.dev/gemini-api/docs/quickstart"
+      ],
+      "note": "Managed agent ID listed on models page; Interactions API agent execution is required. Inference is billed at underlying Gemini rates plus tools, without a standalone model token-price tuple in the archive. Context/output limits and input modalities beyond text are not established."
+    }
+  ]
+}

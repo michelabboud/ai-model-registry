@@ -53,12 +53,6 @@
         "cache_read": {
           "$ref": "#/$defs/price"
         },
-        "cache_write_5m": {
-          "$ref": "#/$defs/price"
-        },
-        "cache_write_1h": {
-          "$ref": "#/$defs/price"
-        },
         "batch_discount_percent": {
           "type": [
             "number",
@@ -72,7 +66,8 @@
           "properties": {
             "threshold_tokens": {
               "type": "integer",
-              "minimum": 1
+              "minimum": 1,
+              "description": "Long-context prices apply when the prompt's input tokens are strictly greater than threshold_tokens."
             },
             "input": {
               "$ref": "#/$defs/price"
@@ -83,11 +78,16 @@
             "cache_read": {
               "$ref": "#/$defs/price"
             },
-            "cache_write_5m": {
-              "$ref": "#/$defs/price"
+            "cache_writes": {
+              "$ref": "#/$defs/cache_writes"
             },
-            "cache_write_1h": {
-              "$ref": "#/$defs/price"
+            "cache_storage_per_mtok_hour": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "description": "USD per million cached tokens per hour. Null means unpublished or unknown; zero means free."
             }
           },
           "required": [
@@ -95,18 +95,27 @@
             "input",
             "output",
             "cache_read",
-            "cache_write_5m",
-            "cache_write_1h"
+            "cache_writes"
           ],
           "additionalProperties": false
+        },
+        "cache_writes": {
+          "$ref": "#/$defs/cache_writes"
+        },
+        "cache_storage_per_mtok_hour": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "USD per million cached tokens per hour. Null means unpublished or unknown; zero means free."
         }
       },
       "required": [
         "input",
         "output",
         "cache_read",
-        "cache_write_5m",
-        "cache_write_1h",
+        "cache_writes",
         "batch_discount_percent"
       ],
       "additionalProperties": false
@@ -255,6 +264,29 @@
           "shutdown"
         ]
       }
+    },
+    "cache_writes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ttl": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{0,3}[mh]$"
+          },
+          "price": {
+            "$ref": "#/$defs/price"
+          }
+        },
+        "required": [
+          "ttl",
+          "price"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 6,
+      "description": "Per-token cache-write rates, USD per million tokens. TTLs must be unique; empty means no published per-token write rate."
     }
   }
 }

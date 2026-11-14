@@ -396,6 +396,25 @@ def semantic_problems(data, kind, stem, provider_stems, today):
             modalities = model.get('input_modalities')
             if isinstance(modalities, list) and 'text' not in modalities:
                 errors.append((pointer(at, 'input_modalities'), 'input_modalities must include text'))
+            pricing = model.get('pricing')
+            if isinstance(pricing, dict):
+                price_sets = [(pointer(at, 'pricing'), pricing)]
+                long_context = pricing.get('long_context')
+                if isinstance(long_context, dict):
+                    price_sets.append((pointer(pointer(at, 'pricing'), 'long_context'), long_context))
+                for prices_at, prices in price_sets:
+                    writes = prices.get('cache_writes')
+                    if not isinstance(writes, list):
+                        continue  # The structural pass reports malformed arrays.
+                    seen_ttls = set()
+                    for write_index, write in enumerate(writes):
+                        if not isinstance(write, dict) or not isinstance(write.get('ttl'), str):
+                            continue
+                        ttl = write['ttl']
+                        if ttl in seen_ttls:
+                            errors.append((pointer(pointer(pointer(prices_at, 'cache_writes'), write_index), 'ttl'),
+                                           'cache-write ttl must be unique within this price array'))
+                        seen_ttls.add(ttl)
             for flag in ('probe', 'default'):
                 if model.get(flag) is True and model.get('status') != 'ga':
                     errors.append((pointer(at, flag), flag + ' must select a ga model'))
