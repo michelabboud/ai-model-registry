@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "kind": "provider",
+  "id": "example-provider",
+  "display_name": "Invented example provider",
+  "base_url": "https://api.example.com/v1",
+  "protocols": [
+    "openai_chat"
+  ],
+  "auth": "bearer",
+  "docs_url": "http://example.com/docs",
+  "note": "Invented example; not vendor data.",
+  "verified": "2026-01-01",
+  "sources": [
+    "https://example.com/official-example-only"
+  ]
+}

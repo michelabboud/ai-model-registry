@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "kind": "models",
+  "provider": "example-provider",
+  "models": [
+    {
+      "id": "example-small",
+      "display_name": "Invented example small",
+      "status": "ga",
+      "tier": "low",
+      "context_window": 8192,
+      "max_output_tokens": 1024,
+      "input_modalities": [
+        "text"
+      ],
+      "probe": true,
+      "default": false,
+      "pricing": {
+        "input": -1,
+        "output": 2,
+        "cache_read": null,
+        "cache_write_5m": null,
+        "cache_write_1h": 0,
+        "batch_discount_percent": null
+      },
+      "note": "Invented example; not vendor data.",
+      "verified": "2026-01-01",
+      "sources": [
+        "https://example.com/official-example-only"
+      ]
+    },
+    {
+      "id": "example-large",
+      "display_name": "Invented example large",
+      "status": "ga",
+      "tier": "high",
+      "context_window": 8192,
+      "max_output_tokens": 1024,
+      "input_modalities": [
+        "text"
+      ],
+      "probe": false,
+      "default": true,
+      "pricing": {
+        "input": 2,
+        "output": 4,
+        "cache_read": null,
+        "cache_write_5m": null,
+        "cache_write_1h": 0,
+        "batch_discount_percent": null
+      },
+      "note": "Invented example; not vendor data.",
+      "verified": "2026-01-01",
+      "sources": [
+        "https://example.com/official-example-only"
+      ]
+    }
+  ]
+}

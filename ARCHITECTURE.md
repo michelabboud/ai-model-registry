@@ -1,0 +1,89 @@
+# Architecture
+
+Dev mode: mvp
+
+## Repository contract
+
+The repository is a shared data source, not an application or launcher. Each data
+object uses `schema_version: 1` and a closed `kind`. Objects reject unknown keys.
+`providers/<id>.json` describes a provider and its HTTPS base endpoint, supported
+protocols, and authentication mechanism. `models/<provider-id>.json` describes
+1–500 models for an existing provider. `harnesses/<id>.json` describes a coding-CLI
+integration using a bare command name and an explicitly supported adapter.
+`media/` is reserved for Genie and is outside R1 validation.
+
+Every provider, model entry, and harness has official source URLs and a verification
+date. Dates and sources provide provenance, not automatic vendor verification. A
+human contributor must check every value against an official vendor page. Examples
+live only under tests and documentation and are explicitly invented.
+
+## Validation boundary
+
+Python 3.11+ and the standard library are the entire validator toolchain. No
+network request, vendor API call, credential read, package install, or command
+execution is part of data validation.
+
+Before checking data, the loader checks the schemas' keyword vocabulary and
+rejects unsupported keywords. It implements only the contract in
+[ADR 0001](docs/adr/0001-standard-library-validator.md).
+
+Supported keywords: `$schema`, `$id`, `title`, `description`, `type`, `properties`, `required`, `additionalProperties: false`, `enum`, `const`, `pattern`, `minLength`, `maxLength`, `minimum`, `maximum`, `items`, `minItems`, `maxItems`, `uniqueItems`, `not`, `$defs`, local `$ref`, `if`, and `then`.
+
+1. The structural pass applies the published schemas: closed objects, required
+   properties, types, lengths and counts, numeric limits, closed enums, patterns,
+   local references, and the supported conditional and negation rules.
+2. The semantic pass checks relationships across records and constraints that need
+   parsing or cross-field comparison. Filenames must match IDs; model collections
+   require their provider; model and environment names must be unique. Each model
+   file has exactly one GA probe and one GA default. The probe's known input price
+   is no greater than every other GA model's known price. Status controls shutdown
+   dates. Verification dates must be real and between 2024-01-01 and today in UTC.
+   URLs are parsed, not trusted solely because they match a pattern. Version-match
+   regexes must compile and contain a capture group.
+
+Input handling rejects files larger than 1 MiB, invalid UTF-8, duplicate JSON keys,
+NaN/Infinity, and nesting deeper than 32. Data directories accept only their direct
+JSON files and reserved `.gitkeep` markers. Stray files, subdirectories, and symlinks
+are errors. JSON pointers identify errors; diagnostic value previews are limited to
+80 characters. Text and JSON reports share the same result and exit status.
+
+## Trust model
+
+A hostile contributor or release attacker can change a price, model ID, endpoint,
+or launcher binding. CI validates the candidate before it can be released. Closed
+protocol, auth, tier, modality, adapter, and role enums prevent arbitrary extensions
+from becoming executable launcher instructions.
+
+A base URL permits HTTPS only, a real parsed host, no userinfo, query, or fragment,
+and only `{region}` or `{project}` placeholders. Other source and documentation
+URLs also require HTTPS and a host and forbid userinfo. The validator does not
+contact endpoints or prove the vendor controls them; official-source review is
+still required.
+
+Environment entries carry `name`, `role`, and `note`, with no `value` field. Tokens,
+API keys, and gateway URL values originate in the consuming app. A name denylist
+blocks shell, loader, interpreter, Git, and SSH control variables. Bare command
+syntax and environment restrictions are enforced in both the schemas and the
+semantic pass, so changing a schema alone does not open that boundary. The closed
+adapter enum lets consumers decide what integrations they implement. An icon is
+an embedded-asset identifier that the app resolves; this registry ships no icons.
+
+All token prices are USD per million tokens. `null` means unknown or not published;
+zero means free. Cache-read, cache-write-5-minute, and cache-write-1-hour prices
+remain distinct. Long-context prices carry an explicit token threshold. Clients
+must not silently coerce `null` to zero, infer unsupported cache prices, or treat a
+missing vendor fact as free service.
+
+## Release format to come
+
+R4 will publish `registry/<N>` releases with `manifest.json`,
+`manifest.json.sig`, and `registry.tar`. The manifest will list SHA-256 hashes for
+all released payload files. Ed25519 signs the exact manifest bytes. Consumers
+verify the signature using their trusted key and then verify all payload hashes
+before parsing data. Packaging and safe archive extraction must be specified in
+R4; the manifest, detached signature, and archive cannot recursively hash themselves.
+
+No release exists yet, no verification key is shipped by R1, and no signing code
+runs in CI. A valid signature proves publisher identity and unchanged signed bytes,
+not correctness or freshness of vendor facts. The schemas, semantic validator,
+source checks, and consumer-side constraints remain distinct controls.
