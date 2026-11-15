@@ -1,9 +1,9 @@
 # Registry verification keys
 
-public key added at the first release ceremony
+Current trusted key: `keys/registry-signing-key.pub.pem` (added at the first
+release ceremony, 2026-11-15).
 
-No signing key exists in this checkout. The first ceremony adds only the public
-Ed25519 PEM as `keys/registry-signing-key.pub.pem`. The private key stays outside
+The repository holds only the public Ed25519 PEM. The private key stays outside
 the repository, owned by Michel, mode 0600. Signing and verification commands
 refuse cleanly until the public PEM exists; data validation and builds do not
 require it.
@@ -16,9 +16,11 @@ PEMs directly under `keys/`.
 
 ## Trusted key history
 
-There are no keys or registry releases to list yet. At the first ceremony add
-the public PEM filename, raw public-key base64, activation date, and first
-`registry/N`. On rotation, retain the old public PEM under a dated `.pub.pem`
+| Public PEM | Raw 32-byte public key (base64) | Active from | First release |
+|---|---|---|---|
+| `registry-signing-key.pub.pem` | `xM+OjCz8qxQk2k5emur38TVhJOFkkP0/8qOyptGdh1A=` | 2026-11-15 | `registry/1` |
+
+ On rotation, retain the old public PEM under a dated `.pub.pem`
 filename here and list its registry-number range. Public-key history must remain
 available so old releases can still be authenticated with their original keys.
 No example or throwaway test key is a trust anchor.
