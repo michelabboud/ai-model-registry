@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "id": "openai/fixture-old"
+    },
+    {
+      "id": "anthropic/fixture-new"
+    },
+    {
+      "id": "google/fixture-new"
+    },
+    {
+      "id": "deepseek/fixture-new"
+    },
+    {
+      "id": "z-ai/fixture-new"
+    },
+    {
+      "id": "x-ai/fixture-new"
+    },
+    {
+      "id": "other/fixture-unwanted"
+    },
+    {
+      "id": "openai/fixture-old:batch"
+    },
+    {
+      "id": "openai/gpt-image-fixture"
+    }
+  ]
+}

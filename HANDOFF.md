@@ -1,5 +1,16 @@
 # Current handoff
 
+[2026-11-15 R5 model-watch handoff](docs/handoffs/2026-11-15-r5-model-watch-handoff.md)
+
+R5 is complete locally: clean 31-file validator, 141 passing tests, CLI help,
+and accepted focused mechanical/deep repair reviews. Only proposal tooling,
+fixtures/tests, workflow, and documentation changed. No network, repository
+commit, tag, push, signing, or release ran; version remains 0.3.0. The external
+coordinator owns source acceptance/checkpoint and first live endpoint checks;
+R4 waits on Michel's signing key.
+
+## R3 handoff retained
+
 [2026-11-14 R3 harness-record handoff](docs/handoffs/2026-11-14-r3-harness-records-handoff.md)
 
 R3 is complete locally: 13 harnesses, required protocol validation, a clean
@@ -24,6 +35,7 @@ is preserved as history; the new official archived sources resolved that blocker
 [2026-11-14 R1 handoff](docs/handoffs/2026-11-14-r1-handoff.md)
 
 R1 supplies the repository contract, validator, tests, CI, and documentation.
-R4–R5 and M1 remain open; R3 is locally complete with coordinator review pending.
+R4 and M1 remain open; R5's current state is recorded above. R3 is locally
+complete with coordinator review pending.
 No registry release exists yet.
 The coordinator owns final review, commit, checkpoint tag, push, and later-task admission.

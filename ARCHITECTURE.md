@@ -105,6 +105,48 @@ including cloud-native APIs. Both vocabularies include `gemini_generate` and
 `gemini_interactions` for distinct Gemini APIs. Endpoint-specific model
 restrictions remain in notes; there is no per-model protocol override in schema v1.
 
+## Proposal-only model watch
+
+The R5 watch is a separate maintenance command, `scripts/model_watch.py`; it
+does not run during offline data validation. Its fixed `VENDORS` table lists
+OpenAI, Anthropic, Gemini, xAI, DeepSeek, and public OpenRouter endpoints,
+authentication headers, pagination, and non-text family exclusions. Gemini must
+support `generateContent`; OpenRouter is limited to six named vendor prefixes
+and excludes `:batch` routes. Z.ai, Vertex, and Bedrock listing integrations are
+outside R5 because no verified key-scoped endpoint was supplied.
+
+The script compares listings with `models/<provider>.json`. New admitted IDs and
+missing active (`ga`/`preview`) records become only `TO VERIFY` Markdown
+worksheets under `candidates/`, citing the provider's `docs_url` and existing
+model/pricing sources. An omission is a prompt to check vendor deprecation notes,
+not proof of retirement. Deprecated records do not become missing proposals.
+Neither provider/model records nor their schema contracts are changed by a
+watch run.
+
+The CI boundary is two jobs. `watch` has vendor keys and a read-only token;
+`pull-request` has a write token but no vendor keys or vendor-facing code. Only
+the six known regular worksheet filenames are admitted from the artifact.
+`candidates/` remains ignored on `main` and named worksheets are force-added only
+on `model-watch/auto`. One PR is updated in place; branch rewrites use
+`--force-with-lease` against the observed remote SHA, and human commits prevent
+automation from overwriting or closing the branch's PR. Skipped vendors retain
+their existing branch worksheets as possibly stale, including successful runs
+with no fresh changes. Closure requires a complete no-difference check.
+
+Keys are optional environment inputs, stripped of surrounding whitespace and
+restricted to visible ASCII; invalid-key errors name only the secret. Requests
+use header authentication and refuse redirects. Untrusted IDs are admitted by a
+bounded grammar or dropped and counted without being echoed. A listing exceeding
+4 MiB cumulatively, 2,000 entries, or 10 pages fails rather than truncating.
+Unexpected shapes fail the affected vendor and the run. Anthropic, DeepSeek,
+and xAI shapes remain **UNVERIFIED** until the coordinator checks a live run.
+
+The workflow triggers only on the weekly schedule or manual dispatch, never on
+`pull_request` or `pull_request_target`. No signing key is in CI. The watch never
+signs, creates a release, or pushes `main`; human verification and R4's local
+release procedure remain separate. See [the guide](docs/model-watch.md) for the
+full threat sketch and [ADR 0005](docs/adr/0005-model-watch.md) for the design.
+
 ## Release format to come
 
 R4 will publish `registry/<N>` releases with `manifest.json`,

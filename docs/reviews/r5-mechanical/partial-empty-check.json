@@ -1,0 +1,7 @@
+{
+  "case": "resolved only prior worksheet while different vendor skipped without prior worksheet",
+  "branch_unchanged": true,
+  "resolved_openai_worksheet_still_present": true,
+  "branch_foreign": "false",
+  "pr_write_calls": []
+}

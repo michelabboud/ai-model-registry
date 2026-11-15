@@ -1,0 +1,134 @@
+[
+  {
+    "response_vendor": "openai",
+    "reflected_key_source": "DEEPSEEK_MODELS_KEY",
+    "malformed_id": false,
+    "exit_error": true,
+    "safe_diagnostic": true,
+    "no_known_key_in_output_files": true,
+    "no_known_key_in_urls": true,
+    "no_pr_body": true,
+    "no_candidates": true
+  },
+  {
+    "response_vendor": "openai",
+    "reflected_key_source": "DEEPSEEK_MODELS_KEY",
+    "malformed_id": true,
+    "exit_error": true,
+    "safe_diagnostic": true,
+    "no_known_key_in_output_files": true,
+    "no_known_key_in_urls": true,
+    "no_pr_body": true,
+    "no_candidates": true
+  },
+  {
+    "response_vendor": "anthropic",
+    "reflected_key_source": "OPENAI_MODELS_KEY",
+    "malformed_id": false,
+    "exit_error": true,
+    "safe_diagnostic": true,
+    "no_known_key_in_output_files": true,
+    "no_known_key_in_urls": true,
+    "no_pr_body": true,
+    "no_candidates": true
+  },
+  {
+    "response_vendor": "anthropic",
+    "reflected_key_source": "OPENAI_MODELS_KEY",
+    "malformed_id": true,
+    "exit_error": true,
+    "safe_diagnostic": true,
+    "no_known_key_in_output_files": true,
+    "no_known_key_in_urls": true,
+    "no_pr_body": true,
+    "no_candidates": true
+  },
+  {
+    "response_vendor": "gemini",
+    "reflected_key_source": "OPENAI_MODELS_KEY",
+    "malformed_id": false,
+    "exit_error": true,
+    "safe_diagnostic": true,
+    "no_known_key_in_output_files": true,
+    "no_known_key_in_urls": true,
+    "no_pr_body": true,
+    "no_candidates": true
+  },
+  {
+    "response_vendor": "gemini",
+    "reflected_key_source": "OPENAI_MODELS_KEY",
+    "malformed_id": true,
+    "exit_error": true,
+    "safe_diagnostic": true,
+    "no_known_key_in_output_files": true,
+    "no_known_key_in_urls": true,
+    "no_pr_body": true,
+    "no_candidates": true
+  },
+  {
+    "response_vendor": "xai",
+    "reflected_key_source": "OPENAI_MODELS_KEY",
+    "malformed_id": false,
+    "exit_error": true,
+    "safe_diagnostic": true,
+    "no_known_key_in_output_files": true,
+    "no_known_key_in_urls": true,
+    "no_pr_body": true,
+    "no_candidates": true
+  },
+  {
+    "response_vendor": "xai",
+    "reflected_key_source": "OPENAI_MODELS_KEY",
+    "malformed_id": true,
+    "exit_error": true,
+    "safe_diagnostic": true,
+    "no_known_key_in_output_files": true,
+    "no_known_key_in_urls": true,
+    "no_pr_body": true,
+    "no_candidates": true
+  },
+  {
+    "response_vendor": "deepseek",
+    "reflected_key_source": "OPENAI_MODELS_KEY",
+    "malformed_id": false,
+    "exit_error": true,
+    "safe_diagnostic": true,
+    "no_known_key_in_output_files": true,
+    "no_known_key_in_urls": true,
+    "no_pr_body": true,
+    "no_candidates": true
+  },
+  {
+    "response_vendor": "deepseek",
+    "reflected_key_source": "OPENAI_MODELS_KEY",
+    "malformed_id": true,
+    "exit_error": true,
+    "safe_diagnostic": true,
+    "no_known_key_in_output_files": true,
+    "no_known_key_in_urls": true,
+    "no_pr_body": true,
+    "no_candidates": true
+  },
+  {
+    "response_vendor": "openrouter",
+    "reflected_key_source": "OPENAI_MODELS_KEY",
+    "malformed_id": false,
+    "exit_error": true,
+    "safe_diagnostic": true,
+    "no_known_key_in_output_files": true,
+    "no_known_key_in_urls": true,
+    "no_pr_body": true,
+    "no_candidates": true
+  },
+  {
+    "response_vendor": "openrouter",
+    "reflected_key_source": "OPENAI_MODELS_KEY",
+    "malformed_id": true,
+    "exit_error": true,
+    "safe_diagnostic": true,
+    "no_known_key_in_output_files": true,
+    "no_known_key_in_urls": true,
+    "no_pr_body": true,
+    "no_candidates": true
+  }
+]

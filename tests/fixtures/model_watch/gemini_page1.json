@@ -1,0 +1,17 @@
+{
+  "models": [
+    {
+      "name": "models/fixture-old",
+      "supportedGenerationMethods": [
+        "generateContent"
+      ]
+    },
+    {
+      "name": "models/fixture-embed",
+      "supportedGenerationMethods": [
+        "embedContent"
+      ]
+    }
+  ],
+  "nextPageToken": "fixture-page-2"
+}

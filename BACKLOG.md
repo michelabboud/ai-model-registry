@@ -2,8 +2,13 @@
 
 - 2026-11-15 — R2 coordinator verification — Source: coordinator fix brief. Done locally: nine providers and 177 model records after API-ID, batch-route and threshold corrections; validator clean (18 files, 0 problems) and 81 passing tests. Coordinator acceptance/checkpoint remains pending.
 - 2026-11-14 — R3 — Source: current coding-CLI harness brief. Done locally: required protocol contract and 13 sourced records; 31 files validate clean and 89 tests pass. Research gaps are enumerated below. Coordinator review/checkpoint remains separate.
-- 2026-11-14 — R4 — Source: R1 brief and upstream plan. Open: define release payload and key distribution, build manifest/signature/archive tooling, and publish verified `registry/<N>` releases; signing never in CI.
-- 2026-11-14 — R5 — Source: R1 brief and upstream plan. Open: vendor list-API work, including documenting environment key names only in `.env.example`.
+- 2026-11-14 — R4 — Source: R1 brief, upstream plan, and R5 lane brief. Waiting on Michel's signing key: define release payload and key distribution, build manifest/signature/archive tooling, and publish verified `registry/<N>` releases; signing never in CI.
+- 2026-11-14 — R5 — Source: current R5 brief and upstream plan. Done locally 2026-11-15: six-vendor proposal-only watch, two-job workflow, offline fixtures/tests, and key-name documentation. Validator clean; 141 tests pass; both review repairs accepted. Coordinator source acceptance/checkpoint and first live run remain separate.
+- 2026-11-15 — R5 / Z.ai — Source: R5 scope. Open: not watched; no documented key-scoped list endpoint verified for this task. Do not infer a listing endpoint.
+- 2026-11-15 — R5 / Vertex — Source: R5 scope. Open: not watched; no documented key-scoped list endpoint verified for this task. Do not infer cloud listing/auth behavior.
+- 2026-11-15 — R5 / Bedrock — Source: R5 scope. Open: not watched; no documented key-scoped list endpoint verified for this task. Do not infer cloud listing/auth behavior.
+- 2026-11-15 — R5 / endpoint compatibility — Source: offline R5 brief. Open, UNVERIFIED: Anthropic, DeepSeek, and xAI response shapes need the coordinator's first live confirmation; fixture tests cannot establish compatibility.
+- 2026-11-15 — R5 / restricted keys — Source: offline R5 threat model. Open, UNVERIFIED: confirm current vendor console restrictions for Anthropic, Gemini, xAI, and DeepSeek before describing a key as enforceably list-only; missing secrets remain explicitly skipped.
 - 2026-11-14 — M1 — Source: approved upstream registry plan. Open: consumer integration and its acceptance evidence, starting with The Operator; Genie follows later.
 
 See [PLAN.md](PLAN.md) for the authoritative plan link. These are later approved-plan
@@ -61,3 +66,6 @@ records or consumers' integration/asset choices. No network verification ran in 
 - 2026-11-14 — R3 / OpenCode v2 — Open, UNVERIFIED: native custom-endpoint Responses routing is not independently established by the research; v1 config acceptance alone is not treated as a v2 protocol guarantee.
 
 - 2026-11-15 — R3 editor diagnostic — Open, UNVERIFIED attribution: basedpyright reported bool/int not iterable at the validator CLI report loop; the loop and report construction are unchanged from HEAD. No standalone baseline type-check was run; required validator/unittest gates pass. Assess the annotation/inference issue separately before claiming a type-check pass.
+
+- 2026-11-15 — R5 security / mechanical review — Resolved locally, due at mvp: a hostile vendor could reflect a known key into a valid-looking ID or page cursor and disclose it in a worksheet or URL. Reject before publication/query construction; red/green regressions and focused mechanical/deep re-reviews accepted. Initial failure evidence retained in `docs/reviews/r5-mechanical/` and the R5 validation report.
+- 2026-11-15 — R5 lifecycle / independent reviews — Resolved locally: a partial no-worksheet run left resolved proposals and an old PR body visible. Existing branches now reconcile once and refresh the body; repeated runs add no empty commits. Local race/regression checks and focused re-reviews accepted; hosted zero-difference PR behavior remains UNVERIFIED until first live run.

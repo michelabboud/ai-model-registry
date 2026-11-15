@@ -1,0 +1,74 @@
+[
+  {
+    "vendor": "openai",
+    "exit_code": 1,
+    "safe_output": true,
+    "safe_urls": true,
+    "candidate_absent": true,
+    "pr_body_absent": true,
+    "step_outputs_absent": true,
+    "check_vendor_status": "error"
+  },
+  {
+    "vendor": "anthropic",
+    "exit_code": 1,
+    "safe_output": true,
+    "safe_urls": true,
+    "candidate_absent": true,
+    "pr_body_absent": true,
+    "step_outputs_absent": true,
+    "check_vendor_status": "error"
+  },
+  {
+    "vendor": "gemini",
+    "exit_code": 1,
+    "safe_output": true,
+    "safe_urls": true,
+    "candidate_absent": true,
+    "pr_body_absent": true,
+    "step_outputs_absent": true,
+    "check_vendor_status": "error"
+  },
+  {
+    "vendor": "xai",
+    "exit_code": 1,
+    "safe_output": true,
+    "safe_urls": true,
+    "candidate_absent": true,
+    "pr_body_absent": true,
+    "step_outputs_absent": true,
+    "check_vendor_status": "error"
+  },
+  {
+    "vendor": "deepseek",
+    "exit_code": 1,
+    "safe_output": true,
+    "safe_urls": true,
+    "candidate_absent": true,
+    "pr_body_absent": true,
+    "step_outputs_absent": true,
+    "check_vendor_status": "error"
+  },
+  {
+    "vendor": "openrouter",
+    "exit_code": 1,
+    "safe_output": true,
+    "safe_urls": true,
+    "candidate_absent": true,
+    "pr_body_absent": true,
+    "step_outputs_absent": true,
+    "check_vendor_status": "error"
+  },
+  {
+    "direct_fetch_pages": "anthropic",
+    "safe_error": true,
+    "requests": 1,
+    "safe_urls": true
+  },
+  {
+    "direct_fetch_pages": "gemini",
+    "safe_error": true,
+    "requests": 1,
+    "safe_urls": true
+  }
+]

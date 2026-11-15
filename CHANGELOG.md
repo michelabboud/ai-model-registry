@@ -6,6 +6,28 @@ separate future sequence, `registry/<N>`.
 
 ## Unreleased
 
+## [0.4.0] - 2026-11-15
+
+### Added
+
+- R5 proposal-only weekly text-model watch for OpenAI, Anthropic, Gemini, xAI,
+  DeepSeek, and public OpenRouter listings, with explicit non-text exclusions,
+  bounded pagination, hostile-ID handling, and `TO VERIFY` worksheets.
+- Two-job model-watch workflow separating vendor keys from repository write
+  access, one lease-protected watch branch/PR, known worksheet-name admission,
+  and possibly-stale carry-forward for skipped vendors.
+- Offline invented fixtures and mocked transport/workflow tests; key-name-only
+  environment documentation, human source-verification guide, and ADR 0005.
+  Anthropic, DeepSeek, and xAI endpoint shapes remain UNVERIFIED pending a live
+  coordinator check. R5 does not sign or publish registry data.
+
+### Fixed
+
+- Refuse credential values reflected by a listing into otherwise valid model
+  IDs or pagination cursors, before artifacts or query URLs can disclose them.
+- Reconcile an existing watch branch and PR body when a partial run resolves
+  its last worksheet; repeated incomplete runs do not add empty commits.
+
 ## [0.3.0] - 2026-11-15
 
 ### Added

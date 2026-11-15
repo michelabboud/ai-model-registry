@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "id": "fixture-old"
+    },
+    {
+      "id": "fixture-new"
+    },
+    {
+      "id": "text-embedding-fixture"
+    },
+    {
+      "id": "gpt-image-fixture"
+    },
+    {
+      "id": "whisper-fixture"
+    },
+    {
+      "id": "fixture-realtime"
+    },
+    {
+      "id": "omni-moderation-fixture"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "vendor": "openai",
+    "records": 31,
+    "load": "ok"
+  },
+  {
+    "vendor": "anthropic",
+    "records": 15,
+    "load": "ok"
+  },
+  {
+    "vendor": "gemini",
+    "records": 15,
+    "load": "ok"
+  },
+  {
+    "vendor": "xai",
+    "records": 8,
+    "load": "ok"
+  },
+  {
+    "vendor": "deepseek",
+    "records": 2,
+    "load": "ok"
+  },
+  {
+    "vendor": "openrouter",
+    "records": 72,
+    "load": "ok"
+  },
+  {
+    "check": "credential-as-model-id",
+    "status": "checked",
+    "new_contains_key": true,
+    "worksheet_contains_key": true
+  },
+  {
+    "check": "credential-as-anthropic-cursor",
+    "cursor_url_contains_key": true
+  },
+  {
+    "check": "credential-as-gemini-cursor",
+    "cursor_url_contains_key": true
+  }
+]

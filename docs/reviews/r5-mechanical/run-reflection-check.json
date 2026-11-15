@@ -1,0 +1,9 @@
+{
+  "case": "run with reflected request key as OpenAI ID",
+  "exit_code": 3,
+  "leaked_worksheet_names": [
+    "openai.md"
+  ],
+  "pr_body_created": true,
+  "all_network_calls_mocked": true
+}

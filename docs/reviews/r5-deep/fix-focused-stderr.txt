@@ -1,0 +1,13 @@
+test_reflected_key_in_vendor_model_ids_fails_without_publication (test_model_watch.CredentialsAndHostility.test_reflected_key_in_vendor_model_ids_fails_without_publication) ... ok
+test_reflected_keys_never_enter_pagination_urls (test_model_watch.CredentialsAndHostility.test_reflected_keys_never_enter_pagination_urls) ... ok
+test_partial_empty_run_prunes_resolved_last_sheet_and_updates_existing_pr (test_model_watch_workflow.WorkflowShell.test_partial_empty_run_prunes_resolved_last_sheet_and_updates_existing_pr) ... ok
+test_partial_empty_run_refreshes_pr_when_existing_branch_already_matches_main (test_model_watch_workflow.WorkflowShell.test_partial_empty_run_refreshes_pr_when_existing_branch_already_matches_main) ... ok
+test_partial_empty_run_lease_refuses_race_without_pr_update (test_model_watch_workflow.WorkflowShell.test_partial_empty_run_lease_refuses_race_without_pr_update) ... ok
+test_no_worksheets_does_not_open_empty_pr (test_model_watch_workflow.WorkflowShell.test_no_worksheets_does_not_open_empty_pr) ... ok
+test_complete_empty_run_closes_existing_pr_and_keeps_branch (test_model_watch_workflow.WorkflowShell.test_complete_empty_run_closes_existing_pr_and_keeps_branch) ... ok
+test_human_commit_is_detected_and_neither_updated_nor_closed (test_model_watch_workflow.WorkflowShell.test_human_commit_is_detected_and_neither_updated_nor_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 3.501s
+
+OK

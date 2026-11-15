@@ -23,8 +23,8 @@ consult that plan for later tasks' full specifications and acceptance gates.
 | R1 | Repository skeleton, three JSON Schemas, standard-library validator, fixtures, tests, and validation CI | R1 lane; coordinator integrates and reviews | None | Done 2026-11-14 (local checks); coordinator review/checkpoint pending |
 | R2 | Officially sourced and dated vendor data; full scope in upstream plan | Coordinator-assigned lane | R1 accepted | Done locally 2026-11-14; coordinator acceptance/checkpoint pending |
 | R3 | Required harness protocols and 13 officially sourced coding-CLI records | R3 lane; coordinator integrates and reviews | R1 and R2 supplied by coordinator | Done locally 2026-11-15; coordinator review/checkpoint pending |
-| R4 | Numbered signed releases: manifest, Ed25519 signature, and archive | Coordinator-assigned lane | As specified upstream | Open |
-| R5 | Vendor list-API work, including documenting key names without values; full scope upstream | Coordinator-assigned lane | As specified upstream | Open |
+| R4 | Numbered signed releases: manifest, Ed25519 signature, and archive | Coordinator-assigned lane | As specified upstream | Waiting on Michel's signing key |
+| R5 | Six-vendor proposal-only text-model watch, separate watch/PR jobs, fixtures/tests, and key-name documentation | R5 lane; coordinator reviews/checkpoints and performs live check | R1–R3 supplied at repository version 0.3.0 | Done locally 2026-11-15; 141 tests/clean validator; coordinator acceptance/live checks separate |
 | M1 | Consumer integration milestone; first consumer is The Operator, later Genie | Coordinator | As specified upstream | Open |
 
 Tasks run back to back under the coordinator's admission and review rules. This
@@ -111,3 +111,54 @@ labels, clean 31-file validator, and 89 passing tests. See the
 [field/source audit](docs/reports/2026-11-14-harness-records.md). The coordinator
 owns independent review and checkpointing. No version, Git metadata, network,
 release, or later-task admission was changed by R3.
+
+## R5 execution — 2026-11-15
+
+Dev mode: mvp. Authorized by the current R5 lane brief at repository version
+0.3.0. The lane implements only the proposal-only model watch, offline fixtures
+and tests, two-job workflow, and documentation. No network, commit, tag, push,
+version bump, signing, release, or later-task admission is authorized. R4 is
+waiting on Michel's signing key.
+
+The R5 owner owns `scripts/model_watch.py`, vendor fixture tests, and final
+integration. A scoped workflow worker owns `.github/workflows/model-watch.yml`
+and its local workflow simulations. A documentation worker owns the guide,
+ADR 0005, and affected repository records. These workers share the checkout,
+preserve each other's edits, and do not recursively fan out. Shared-file and
+dependent work stays sequential. The lane ran fresh-context mechanical and deep
+reviews; the external coordinator owns final source acceptance, the source
+checkpoint, and first live compatibility checks.
+
+The threat sketch is [the model-watch guide](docs/model-watch.md): keep the
+signing key outside CI, separate vendor-key parsing from repository write access,
+admit only fixed worksheet names, refuse redirects and malformed/list-limit
+responses, never echo hostile IDs or keys, and retain skipped worksheets as
+possibly stale. [ADR 0005](docs/adr/0005-model-watch.md) records the adaptation
+before implementation.
+
+| Step | Owner / file boundary | Acceptance evidence | Status |
+| --- | --- | --- | --- |
+| Define proposal and CI trust boundaries | Documentation worker: guide and ADR 0005 | Six-vendor policy and full threat sketch | Done locally |
+| Implement listings and worksheet generation | R5 owner: `scripts/`, vendor fixtures/tests | Mocked `urllib`, no network/real keys; required positive/failure paths | Done locally |
+| Adapt the two-job workflow | Workflow worker: `.github/`, workflow simulation tests | Local branch/PR admission, lease, human-commit, and skipped-vendor behavior | Done locally |
+| Integrate docs and verify the frozen candidate | R5 owner with documentation worker | Validator, full unittest discovery, CLI help, and Git status | Done locally |
+| Return to coordinator | R5 owner: current handoff | Exact results and remaining UNVERIFIED/live/review boundaries | Done locally |
+
+Shared dashboard reporting is unavailable in this lane: the existing shared
+state is outside its writable roots. The lane does not relocate or overwrite
+that state to work around containment. Its local implementation evidence is
+recorded in the [R5 handoff](docs/handoffs/2026-11-15-r5-model-watch-handoff.md).
+
+R5 final local acceptance: **31 files checked; 0 problems; clean**; **141 tests
+in 19.006s, OK**; CLI help exit 0. Both review defects were reproduced, repaired,
+and accepted by focused re-review. Initial and final source hashes, raw failures,
+and exact command receipts are retained in the [validation report](docs/reports/2026-11-15-r5-validation.md).
+No version change, repository commit, tag, or push was performed.
+
+| R5 review | Requested configuration | Finding / final disposition |
+| --- | --- | --- |
+| Mechanical | `gpt-6.1-sol`, `high`; fresh context, shared filesystem | Credential reflection and partial-empty lifecycle reproduced; both fixed and focused re-reviews accepted. |
+| Deep | `gpt-6.1-sol`, `xhigh`; fresh context, shared filesystem | Partial-empty lifecycle reproduced; credential-safety overstatement corrected after mechanical evidence; both final fixes accepted. |
+
+Actual provider runtime identity, token use, and queue latency are unavailable.
+The two reviewers share a model family; no cross-family independence is claimed.

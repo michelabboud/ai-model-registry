@@ -1,0 +1,35 @@
+{
+  "scenario": "OpenAI resolved; xAI skipped with no previous worksheet; no fresh worksheets",
+  "workflow_result": "none",
+  "workflow_complete": "false",
+  "shell_returncode": 0,
+  "shell_stdout": "No worksheets remain from this run.\n",
+  "shell_stderr": "Switched to a new branch 'model-watch/auto'\n",
+  "before_branch_sha": "6c82eebd33ebcc0366fcc174adec0e84cfef90ee",
+  "after_branch_sha": "6c82eebd33ebcc0366fcc174adec0e84cfef90ee",
+  "retained_openai_worksheet": "Resolved OpenAI worksheet from the earlier run",
+  "new_gh_calls": [
+    [
+      "auth",
+      "setup-git"
+    ],
+    [
+      "pr",
+      "list",
+      "--repo",
+      "fixture/ai-model-registry",
+      "--head",
+      "model-watch/auto",
+      "--base",
+      "main",
+      "--state",
+      "open",
+      "--json",
+      "number",
+      "--jq",
+      ".[0].number // empty"
+    ]
+  ],
+  "close_step_condition": false,
+  "root_repository_mutated": false
+}

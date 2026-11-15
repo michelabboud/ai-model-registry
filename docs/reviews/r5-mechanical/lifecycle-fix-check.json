@@ -1,0 +1,10 @@
+{
+  "case": "initial M2 reproduction after repair",
+  "branch_changed": true,
+  "resolved_openai_removed": true,
+  "no_unknown_worksheet_added": true,
+  "head_ahead_main": "1",
+  "pr_updated": true,
+  "pr_not_closed": true,
+  "repeated_sha_unchanged": true
+}

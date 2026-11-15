@@ -211,6 +211,24 @@ The schemas use a guarded subset of JSON Schema draft 2020-12; they are not a
 claim that the Python validator implements the complete standard. See
 [the architecture](ARCHITECTURE.md) and [ADR 0001](docs/adr/0001-standard-library-validator.md).
 
+## Weekly model watch
+
+The scheduled [model-watch workflow](.github/workflows/model-watch.yml) checks
+OpenAI, Anthropic, Gemini, xAI, DeepSeek, and public OpenRouter listings on
+Mondays at 06:23 UTC or manual dispatch. It proposes only ignored
+`candidates/<provider>.md` worksheets on `model-watch/auto`, with one updated
+pull request and every proposed field marked `TO VERIFY`. A missing listing
+entry is a prompt to investigate, never proof that a model retired.
+
+Vendor keys stay in a read-only job; the PR job has write access but no keys or
+vendor-facing code. The watch never edits provider/model records, signs, releases,
+or pushes `main`. Missing secrets skip that vendor and preserve its prior
+worksheet as possibly stale. See [the setup and human verification guide](docs/model-watch.md)
+for the five key names, text-family filters, strict listing limits, and threat
+sketch. Anthropic, DeepSeek, and xAI endpoint shapes remain **UNVERIFIED** until
+the coordinator's first live run. `python3 scripts/model_watch.py --help` and the
+fixture tests work offline; running a real watch contacts the vendors.
+
 ## Releases and licensing
 
 Releases are **not yet published**. R4 will implement numbered `registry/<N>`
