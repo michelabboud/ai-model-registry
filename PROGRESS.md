@@ -1,6 +1,6 @@
 # Progress
 
-Updated: 2026-11-15. Dev mode: mvp. Repository version: 0.5.1.
+Updated: 2026-11-15. Dev mode: mvp. Repository version: 0.5.2.
 
 Current inventory: nine providers, 177 models, 13 harnesses. The task receipts
 below retain their historical counts.
@@ -19,3 +19,5 @@ handoff is linked from [HANDOFF.md](HANDOFF.md). This lane performs no commit, t
 push, release, network/vendor API call, or real-key signing operation. Disposable
 test keys are the only signing inputs. Coordinator review and source
 checkpoint remain separate from local validation results.
+
+- 2026-11-15 — R4 ceremony done: signing key created on Michel's machine; `registry/1` built, signed, verified and published (anonymous download verified with OpenSSL against `keys/registry-signing-key.pub.pem`). R1–R5 and M1 complete.

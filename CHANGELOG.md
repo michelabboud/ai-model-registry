@@ -6,6 +6,13 @@ separate future sequence, `registry/<N>`.
 
 ## Unreleased
 
+## [0.5.2] - 2026-11-15
+
+### Added
+
+- First signing key (public half in `keys/`) and the first signed data release,
+  `registry/1` (34 files, tar sha256 `e7952e0e2b4f2fc3261a9e9800de8740c9e6f184c06a8cac783764cbdb2e1a8e`).
+
 ## [0.5.1] - 2026-11-15
 
 ### Fixed
