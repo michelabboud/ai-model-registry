@@ -6,6 +6,31 @@ separate future sequence, `registry/<N>`.
 
 ## Unreleased
 
+## [0.5.0] - 2026-11-15
+
+### Added
+
+- R4 deterministic POSIX ustar builder and canonical hash/size manifest;
+  validator-first builds refuse dirty data paths and nonempty output directories.
+- Local OpenSSL >= 3.0 Ed25519 signing with strict external private-key metadata
+  checks, immediate trusted-key verification, and no private-key reads in Python.
+- Reference release verifier checking signatures before manifest parsing, exact
+  hashes/sizes and safe canonical archive membership without extraction.
+- Verified consecutive GitHub publication with exact uploaded assets and download
+  byte comparison; offline fake-`gh` tests never publish or contact GitHub.
+- Release/key ceremonies, backup/rotation instructions, deferred public-key
+  directory, signing-backend ADR 0006, and private-PEM/dist ignore rules.
+  No real key, numbered release, version bump, commit, tag or push is part of R4.
+
+### Fixed
+
+- Preserve literal release-directory paths through GitHub CLI's asset parser by
+  staging verified public assets and uploading fixed basenames; `#`/glob
+  characters cannot redirect uploads to another file.
+- Pin all publication API/create/download operations to GitHub.com `origin`
+  instead of inherited gh repository/host defaults; reject malformed response
+  asset names and tag references without a traceback.
+
 ## [0.4.0] - 2026-11-15
 
 ### Added

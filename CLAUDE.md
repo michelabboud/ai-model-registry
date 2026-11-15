@@ -8,7 +8,7 @@ Dev mode: mvp
 - Use Python 3.11+ and the standard library only. Download no validator dependencies.
 - Keep closed objects, closed adapter enums, HTTPS URLs, bare commands, and the environment denylist. Preserve command and environment restrictions in both schemas and semantic validation.
 - Treat supported JSON Schema keywords as an enforced contract. An unsupported keyword must stop schema loading.
-- Signing never runs in CI. R4 will define signed `registry/<N>` releases; no release exists yet.
+- Signing never runs in CI. R4 defines signed `registry/<N>` releases and a local ceremony in `docs/releasing.md`; no real key or registry release exists yet. Tests may use temporary throwaway keys only.
 - Preserve the coordinator-provided CC0-1.0 `LICENSE` verbatim.
 - Run `python3 scripts/validate.py` and `python3 -m unittest discover -s tests -v` before claiming validation passes.
 - Follow the current lane's explicit authority. R1 does not commit, tag, push, publish, or start later tasks; its coordinator does the checkpoint and reviews.

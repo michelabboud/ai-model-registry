@@ -3,3 +3,6 @@ __pycache__/
 .venv/
 candidates/
 .research/
+/dist/
+*.pem
+!keys/*.pub.pem

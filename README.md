@@ -229,14 +229,35 @@ sketch. Anthropic, DeepSeek, and xAI endpoint shapes remain **UNVERIFIED** until
 the coordinator's first live run. `python3 scripts/model_watch.py --help` and the
 fixture tests work offline; running a real watch contacts the vendors.
 
-## Releases and licensing
+## Releases
 
-Releases are **not yet published**. R4 will implement numbered `registry/<N>`
-releases containing `manifest.json` with SHA-256 payload hashes,
-`manifest.json.sig` with an Ed25519 signature over the exact manifest bytes, and
-`registry.tar`. Clients must verify the signature and every payload hash before
-parsing registry data. Signing never runs in CI. Key distribution and the exact
-release payload are R4 work; R1 does not provide a trust key or release tooling.
+Numbered `registry/<N>` releases contain exactly three uploaded assets:
+`registry.tar` (deterministic POSIX ustar of sorted JSON files under `providers/`,
+`models/`, `harnesses/`, and `schema/`), canonical `manifest.json` (SHA-256 hashes
+and byte lengths for those files and the whole archive), and `manifest.json.sig`
+(raw 64-byte Ed25519 signature over the exact manifest bytes). There are no
+directory, link, device, script, key or media entries in the archive.
+
+No registry release or real signing key exists yet. The first release ceremony
+adds the trusted public PEM at `keys/registry-signing-key.pub.pem` and its raw
+32-byte public key as base64 in [keys/README.md](keys/README.md). Consumers pin
+that key through their own trusted distribution. Signing never runs in CI; the
+private key stays outside the repository. Validation and builds need no key.
+
+```sh
+python3 scripts/build_release.py --registry 1 --out dist/registry-1
+python3 scripts/verify_release.py --dir /path/to/downloaded-release
+```
+
+Verification requires OpenSSL >= 3.0 and the trusted public PEM. It checks the
+signature before parsing the manifest, then all hashes/sizes and exact safe tar
+membership without extraction. Clients must finish those checks before parsing
+registry data and enforce their own minimum-client and anti-rollback policies.
+See [the release ceremony](docs/releasing.md) for signing, publishing, download
+comparison, recovery, backup and rotation; see
+[the one-time key procedure](scripts/new_signing_key.md) for Michel's setup.
+
+## Licensing
 
 This registry is dedicated under **CC0-1.0**; see [LICENSE](LICENSE). Contributions
 must follow [CONTRIBUTING.md](CONTRIBUTING.md). Report security problems through

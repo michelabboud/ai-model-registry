@@ -23,7 +23,7 @@ consult that plan for later tasks' full specifications and acceptance gates.
 | R1 | Repository skeleton, three JSON Schemas, standard-library validator, fixtures, tests, and validation CI | R1 lane; coordinator integrates and reviews | None | Done 2026-11-14 (local checks); coordinator review/checkpoint pending |
 | R2 | Officially sourced and dated vendor data; full scope in upstream plan | Coordinator-assigned lane | R1 accepted | Done locally 2026-11-14; coordinator acceptance/checkpoint pending |
 | R3 | Required harness protocols and 13 officially sourced coding-CLI records | R3 lane; coordinator integrates and reviews | R1 and R2 supplied by coordinator | Done locally 2026-11-15; coordinator review/checkpoint pending |
-| R4 | Numbered signed releases: manifest, Ed25519 signature, and archive | Coordinator-assigned lane | As specified upstream | Waiting on Michel's signing key |
+| R4 | Numbered signed release tooling, offline tests and release ceremony | R4 lane; coordinator reviews/checkpoints | R1–R3 and R5 supplied | Done locally 2026-11-15; focused mechanical/deep repair reviews accepted; coordinator checkpoint and real key/publication separate |
 | R5 | Six-vendor proposal-only text-model watch, separate watch/PR jobs, fixtures/tests, and key-name documentation | R5 lane; coordinator reviews/checkpoints and performs live check | R1–R3 supplied at repository version 0.3.0 | Done locally 2026-11-15; 141 tests/clean validator; coordinator acceptance/live checks separate |
 | M1 | Consumer integration milestone; first consumer is The Operator, later Genie | Coordinator | As specified upstream | Open |
 
@@ -117,8 +117,9 @@ release, or later-task admission was changed by R3.
 Dev mode: mvp. Authorized by the current R5 lane brief at repository version
 0.3.0. The lane implements only the proposal-only model watch, offline fixtures
 and tests, two-job workflow, and documentation. No network, commit, tag, push,
-version bump, signing, release, or later-task admission is authorized. R4 is
-waiting on Michel's signing key.
+version bump, signing, release, or later-task admission is authorized. At that
+handoff the first release awaited Michel's signing key; R4 tooling is now
+implemented separately as recorded below.
 
 The R5 owner owns `scripts/model_watch.py`, vendor fixture tests, and final
 integration. A scoped workflow worker owns `.github/workflows/model-watch.yml`
@@ -162,3 +163,45 @@ No version change, repository commit, tag, or push was performed.
 
 Actual provider runtime identity, token use, and queue latency are unavailable.
 The two reviewers share a model family; no cross-family independence is claimed.
+
+## R4 execution — 2026-11-15
+
+Dev mode: mvp. The current R4 brief authorizes offline release tooling and docs
+in this supplied checkout after R1–R3 and R5. The lane owns `scripts/*release.py`,
+`scripts/release_common.py`, `tests/test_release.py`, `.gitignore`, `keys/README.md`,
+the release/key guides, ADR 0006 and affected project records. It changes no data
+or schema, source version, Git metadata, persistent key or remote state. No
+network, commit, tag, push or publication is authorized. Tests may create only
+disposable throwaway keys under temporary directories. The coordinator owns
+source acceptance/checkpoint and later ceremony admission.
+
+The threat sketch is [the release guide](docs/releasing.md#threat-and-trust-boundary):
+authenticate bytes before parsing, check every hash/size and exact safe archive
+membership without extraction, keep private keys external and out of Python,
+and never replace remote tags/releases. OpenSSL is the supplied coordinator
+decision, documented before implementation in ADR 0006. Publication is serialized
+by one maintainer; the CLI is not a distributed lock. Clients own rollback state
+and activation. A real key is not required to build or test the tooling.
+
+| Step | Owner / boundary | Evidence | State |
+| --- | --- | --- | --- |
+| Define signing/packaging and test failures | R4 owner: ADR, tests | Initial 31 tests fail because CLIs do not exist | Done |
+| Implement four CLIs and shared verifier | R4 owner: scripts/tests/ignore rules | 31 initial focused tests pass; 46 final release tests cover broader boundaries and review repairs | Done locally |
+| Document ceremony and key lifecycle | R4 owner: guides and project records | New/old key sequencing, no shipped PEM, recovery and client boundaries | Done locally |
+| Verify integrated candidate | R4 owner: exact-candidate receipts | Validator clean; 187 tests OK; four helps pass; 34-file dry build; source hashes unchanged | Done locally |
+| Independent mechanical/deep review | Two fresh native reviewers; source read-only, separate report directories | Initial findings repaired; mechanical accepts candidate 2; deep accepts identical code/tests plus candidate-3 recovery docs; same model family, shared filesystem | Done; no remaining blocking finding |
+| Return source/evidence to coordinator | R4 owner: current handoff | Final findings/dispositions and status; no source checkpoint here | Done locally; coordinator accepts/checkpoints |
+
+Shared dashboard reporting is unavailable because its existing state is outside
+the lane's writable roots. No alternate board is created to bypass containment.
+The native reviews request `gpt-6.1-sol` at `high` and `xhigh`, respectively;
+actual provider identity, token usage and queue latency are unavailable. These
+are source reviews, not release or consumer acceptance.
+
+R4 final receipt: 187 tests in 31.158s, OK; 31 files/0 validator problems; four
+help exits 0; dry build 34 files and a 245760-byte tar, SHA-256
+`e7952e0e2b4f2fc3261a9e9800de8740c9e6f184c06a8cac783764cbdb2e1a8e`.
+Only recovery/auth-status documentation changed after those checks; unchanged
+production/test hashes and scope justification retain the acceptance evidence.
+See [the validation report](docs/reports/2026-11-15-r4-validation.md) and
+[R4 handoff](docs/handoffs/2026-11-15-r4-release-tooling-handoff.md).

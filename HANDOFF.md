@@ -1,5 +1,16 @@
 # Current handoff
 
+[2026-11-15 R4 release-tooling handoff](docs/handoffs/2026-11-15-r4-release-tooling-handoff.md)
+
+R4 release tooling passes 187 tests, the clean validator, four help commands
+and the deterministic 34-file dry build. Initial publication path/destination
+findings are repaired; focused mechanical/deep reviews accepted the repairs and
+recovery-command documentation. No real key,
+network, source version or Git metadata changed; the coordinator owns source
+acceptance/checkpoint and the later manual first-release ceremony.
+
+## R5 handoff retained
+
 [2026-11-15 R5 model-watch handoff](docs/handoffs/2026-11-15-r5-model-watch-handoff.md)
 
 R5 is complete locally: clean 31-file validator, 141 passing tests, CLI help,

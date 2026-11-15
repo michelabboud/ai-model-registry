@@ -7,8 +7,12 @@ consumer configuration in public issues or pull requests.
 
 Scope includes malicious or unsafe registry data, schema and validator bypasses,
 workflow changes, release integrity, and signing-key handling. No release exists
-yet. Security fixes apply to the current development branch; supported release
-versions and key-rotation procedures will be documented when R4 introduces releases.
+yet. Security fixes apply to the current development branch. The local
+[release ceremony](docs/releasing.md), [manual rotation procedure](scripts/new_signing_key.md#rotation)
+and [public-key history](keys/README.md) define key handling; the first real key
+and release remain separate manual work. Historical releases must retain their
+original trusted key. Signatures establish integrity, not vendor accuracy or
+freshness; clients enforce minimum versions and rollback policy separately.
 
 Provide the affected file and JSON pointer or workflow step, a minimal invented
 reproduction, expected rejection, observed result, and impact on a consuming app.

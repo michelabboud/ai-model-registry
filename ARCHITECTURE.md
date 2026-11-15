@@ -147,16 +147,64 @@ signs, creates a release, or pushes `main`; human verification and R4's local
 release procedure remain separate. See [the guide](docs/model-watch.md) for the
 full threat sketch and [ADR 0005](docs/adr/0005-model-watch.md) for the design.
 
-## Release format to come
+## Signed numbered releases
 
-R4 will publish `registry/<N>` releases with `manifest.json`,
-`manifest.json.sig`, and `registry.tar`. The manifest will list SHA-256 hashes for
-all released payload files. Ed25519 signs the exact manifest bytes. Consumers
-verify the signature using their trusted key and then verify all payload hashes
-before parsing data. Packaging and safe archive extraction must be specified in
-R4; the manifest, detached signature, and archive cannot recursively hash themselves.
+R4 supplies four local Python CLIs and `scripts/release_common.py`, sharing the
+format and verification boundary. `registry/<N>` is a positive consecutive data
+release sequence, independent of source `VERSION`. Every release has exactly
+`registry.tar`, `manifest.json`, and `manifest.json.sig` as uploaded assets.
 
-No release exists yet, no verification key is shipped by R1, and no signing code
-runs in CI. A valid signature proves publisher identity and unchanged signed bytes,
-not correctness or freshness of vendor facts. The schemas, semantic validator,
-source checks, and consumer-side constraints remain distinct controls.
+The build runs the existing validator first and refuses Git changes under
+`providers/`, `models/`, `harnesses/`, and `schema/`. Only their JSON files are
+packaged in sorted relative-path order. Python `tarfile` writes POSIX ustar with
+regular files only, mode 0644, zero mtime/uid/gid, empty uname/gname, no directory
+entries, and canonical zero padding. Source metadata cannot change archive bytes.
+The output directory must be new or empty, outside the data paths and not itself
+a symlink. Exclusive file creation preserves any competing existing artifact.
+
+Canonical manifest JSON uses sorted keys, compact separators, UTF-8 without
+ASCII escaping, and a trailing newline. Its closed format 1 records `registry`,
+UTC `created` date, source `repo_version`, `min_client` with The Operator 0.17.0,
+per-file SHA-256/byte lengths, and complete-tar SHA-256/byte length. The manifest,
+signature and tar are not recursively included in `files`.
+
+OpenSSL >= 3.0 signs the exact manifest bytes with Ed25519; the detached signature
+is exactly 64 raw bytes. All subprocesses use argument lists and `shell=False`.
+Python inspects private-key metadata only: regular file, current-user ownership,
+mode exactly 0600, no final symlink, and resolved location outside the repository.
+Only OpenSSL reads the private key. The signer checks unsigned artifacts, signs
+into a disposable signature path, immediately verifies against the repository's
+public PEM, then exclusively creates the final signature. It never overwrites an
+existing signature or prints OpenSSL error output. Signing never runs in CI.
+
+Verification checks the trusted signature before parsing manifest JSON, then its
+closed/canonical shape, tar hash/size, each member's hash/size, exact sorted file
+membership, safe relative JSON paths, canonical ustar headers and all padding.
+Absolute paths, `..`, backslashes/drive paths, links, devices, duplicate members,
+hidden extension headers and trailing content are rejected. No extraction occurs.
+Clients use this as the reference integrity behavior, validate the authenticated
+data, enforce their own minimum-client/anti-rollback policy and stage/activate
+it safely. An authentic signature proves publisher identity and unchanged bytes,
+not vendor fact accuracy or freshness.
+
+Only publication invokes `gh`. After verification it queries all release pages,
+requires highest `registry/N` plus one, and refuses an existing target tag. It
+pins a credential-free GitHub.com HTTPS/SSH `origin` explicitly for every API,
+create and download operation, ignoring gh's inherited host/repository defaults.
+Before creation, it copies only the three public assets to a private temporary
+directory and re-verifies them. Fixed basename upload operands from that cwd
+prevent gh's `filename#label` or glob parsing from changing literal file binding.
+It creates the remote tag/release against current local HEAD with those assets,
+checks the remote asset list, downloads them and byte-compares staged originals.
+It never moves/deletes tags or releases, including on partial failure. A single
+maintainer serializes publication; CLI preflight and creation are not atomic.
+The target source commit must already exist at the destination. Destination,
+failure recovery and operator responsibilities are documented in
+[releasing.md](docs/releasing.md).
+
+No real key or release exists yet. Validation/build tests do not require one.
+Sign/verify refuse cleanly while `keys/registry-signing-key.pub.pem` is absent.
+[The key history](keys/README.md) will carry current and historical public PEMs,
+raw 32-byte public keys as base64, and registry-number ranges. Key creation,
+encrypted offline backup, restore checks and rotation/client sequencing are
+manual procedures. See [ADR 0006](docs/adr/0006-signing-with-openssl.md).

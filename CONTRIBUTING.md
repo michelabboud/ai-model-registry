@@ -46,7 +46,9 @@ include validation evidence in the handoff or pull request. The R1 implementatio
 lane must not commit, tag, or push; its coordinator performs the checkpoint after
 review.
 
-`registry/<N>` releases are a separate data-release sequence to be implemented in
-R4. No release exists yet. Private signing keys stay out of this repository and
-signing never runs in CI. Report vulnerabilities privately as described in
+`registry/<N>` releases are a separate data-release sequence implemented by R4's
+local tooling. No release or real key exists yet; follow [the ceremony](docs/releasing.md)
+and [key procedure](scripts/new_signing_key.md) for the first release. Private
+signing keys stay outside the repository; signing never runs in CI. Release tests
+use only temporary throwaway keys and a fake `gh`. Report vulnerabilities privately as described in
 [SECURITY.md](SECURITY.md).

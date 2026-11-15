@@ -7,6 +7,7 @@
 | [0003: Cache prices by TTL and hourly storage](0003-cache-pricing-shape.md) | Accepted | 2026-11-14 |
 | [0004: Required harness wire protocols](0004-harness-protocols-field.md) | Accepted | 2026-11-14 |
 | [0005: A proposal-only weekly text-model watch](0005-model-watch.md) | Accepted | 2026-11-15 |
+| [0006: Local Ed25519 signing with OpenSSL](0006-signing-with-openssl.md) | Accepted | 2026-11-15 |
 
 Accepted decisions are preserved. A later change supersedes an earlier decision
 with a new numbered record and explains the consequences.
