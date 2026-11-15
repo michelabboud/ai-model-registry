@@ -149,9 +149,10 @@ changes the manifest, even when the tar remains identical.
 
 ## Client reference verification
 
-`verify_release.py` is the reference behavior. Authenticate the exact manifest
-bytes **before parsing its JSON**, using the client's pinned Ed25519 key. Require
-a 64-byte signature, closed format 1, positive integer registry number, real
+`verify_release.py` is the reference behavior. Clients **MUST** authenticate the
+exact manifest bytes **before parsing its JSON**, using their pinned Ed25519 key,
+and **MUST** verify every signed hash and byte length before parsing registry
+data. Require a 64-byte signature, closed format 1, positive integer registry number, real
 `YYYY-MM-DD` date, version string, supported minimum-client map, safe relative
 JSON paths and canonical serialization. Reject duplicate JSON keys. Check the
 whole tar's hash and byte length; inspect each regular member's hash and byte
@@ -161,10 +162,15 @@ headers and zero padding described above. The reference inspects all bytes and
 does not call `extractall`.
 
 After those checks, a client can create its own fresh staging directory, create
-parents safely, and write only the verified regular files. Apply schema and
-semantic validation before activating data. Client application version checks,
-persisted anti-rollback state, transaction/activation and old-key selection are
-consumer responsibilities, separate from this command's integrity check.
+parents safely, and write only the verified regular files. Clients **MUST** apply
+schema and semantic validation, enforce minimum-client versions, and refuse
+downgrades using a persisted highest accepted registry number. Before activating
+an update, clients **MUST** show its diff and require a person's explicit
+confirmation. Endpoint changes (`base_url`, auth, protocols) and launcher changes
+(`harnesses/`) **MUST** be shown separately from each other and from other data
+changes, and **MUST NOT** be applied automatically. Transactional activation,
+persisted anti-rollback state and old-key selection remain consumer
+responsibilities; this command establishes integrity, not activation approval.
 
 ## Failure and recovery
 

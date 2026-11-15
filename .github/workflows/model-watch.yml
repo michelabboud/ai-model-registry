@@ -160,8 +160,9 @@ jobs:
           in="$RUNNER_TEMP/watch-in"
           body="$RUNNER_TEMP/pr-body.md"
           # Validate parent directories too: a regular child can hide behind a
-          # symlinked artifact or candidates directory.
-          if [ -L "$in" ] || [ ! -d "$in" ] || [ -L "$in/candidates" ] || [ ! -d "$in/candidates" ]; then
+          # symlinked artifact or candidates directory. Artifact transport may
+          # omit an empty candidates directory when only pr-body.md is present.
+          if [ -L "$in" ] || [ ! -d "$in" ] || [ -L "$in/candidates" ] || { [ -e "$in/candidates" ] && [ ! -d "$in/candidates" ]; }; then
             echo "::error::artifact directories are not regular directories"; exit 1
           fi
           if [ -L "$in/pr-body.md" ] || [ ! -f "$in/pr-body.md" ]; then

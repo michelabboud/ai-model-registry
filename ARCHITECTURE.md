@@ -177,14 +177,22 @@ into a disposable signature path, immediately verifies against the repository's
 public PEM, then exclusively creates the final signature. It never overwrites an
 existing signature or prints OpenSSL error output. Signing never runs in CI.
 
-Verification checks the trusted signature before parsing manifest JSON, then its
+Verification reads manifest bytes once and checks the trusted signature over
+that private snapshot before parsing the same bytes as JSON, then checks its
 closed/canonical shape, tar hash/size, each member's hash/size, exact sorted file
 membership, safe relative JSON paths, canonical ustar headers and all padding.
 Absolute paths, `..`, backslashes/drive paths, links, devices, duplicate members,
-hidden extension headers and trailing content are rejected. No extraction occurs.
-Clients use this as the reference integrity behavior, validate the authenticated
-data, enforce their own minimum-client/anti-rollback policy and stage/activate
-it safely. An authentic signature proves publisher identity and unchanged bytes,
+hidden extension headers and trailing content are rejected. The opened archive's
+size must match the signed byte count before hashing starts. No extraction occurs.
+Clients **MUST** verify the signature before parsing manifest JSON and all signed
+hashes and byte lengths before parsing registry data. They **MUST** validate the
+authenticated data, enforce minimum-client versions, and refuse downgrades using
+persisted registry-number state. Before activation, clients **MUST** show the diff
+and require a person's explicit confirmation. Endpoint changes (`base_url`, auth,
+protocols) and launcher changes (`harnesses/`) **MUST** be shown separately from
+each other and from other data changes, and **MUST NOT** be applied automatically.
+Clients own safe staging and transactional activation. An authentic signature
+proves publisher identity and unchanged bytes,
 not vendor fact accuracy or freshness.
 
 Only publication invokes `gh`. After verification it queries all release pages,

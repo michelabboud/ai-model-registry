@@ -251,17 +251,25 @@ def parse_manifest(raw):
     return manifest
 
 
-def verify_signature(manifest_path, signature_path, trusted_key):
+def verify_signature(raw, signature_path, trusted_key):
     signature = read_small(signature_path, SIGNATURE_BYTES, 'signature (64 bytes required)')
     if len(signature) != SIGNATURE_BYTES:
         raise ReleaseError('signature must be exactly 64 bytes')
-    command(['openssl', 'pkeyutl', '-verify', '-rawin', '-pubin', '-inkey',
-             str(trusted_key), '-in', str(manifest_path), '-sigfile', str(signature_path)],
-            'manifest signature verification')
+    # OpenSSL must authenticate the same snapshot that Python will parse,
+    # rather than reopening a caller-controlled manifest pathname.
+    with tempfile.TemporaryDirectory(prefix='registry-verify-') as scratch:
+        manifest_path = Path(scratch) / 'manifest.json'
+        with manifest_path.open('xb') as output:
+            output.write(raw)
+        command(['openssl', 'pkeyutl', '-verify', '-rawin', '-pubin', '-inkey',
+                 str(trusted_key), '-in', str(manifest_path), '-sigfile', str(signature_path)],
+                'manifest signature verification')
 
 
 def check_archive(path, manifest):
     with regular_open(path, 'tar') as handle:
+        if os.fstat(handle.fileno()).st_size != manifest['tar']['bytes']:
+            raise ReleaseError('tar size does not match manifest')
         if digest_stream(handle) != manifest['tar']:
             raise ReleaseError('tar hash or size does not match manifest')
         handle.seek(0)
@@ -315,7 +323,7 @@ def verify_release(directory):
     trusted_key = public_key()
     require_openssl()
     raw = read_small(directory / 'manifest.json', MAX_MANIFEST_BYTES, 'manifest')
-    verify_signature(directory / 'manifest.json', directory / 'manifest.json.sig', trusted_key)
+    verify_signature(raw, directory / 'manifest.json.sig', trusted_key)
     manifest = parse_manifest(raw)
     check_archive(directory / 'registry.tar', manifest)
     return manifest
@@ -355,7 +363,7 @@ def sign_release(directory, private_key):
         signature_path = Path(scratch) / 'manifest.json.sig'
         command(['openssl', 'pkeyutl', '-sign', '-rawin', '-inkey', str(key),
                  '-in', str(manifest_path), '-out', str(signature_path)], 'manifest signing')
-        verify_signature(manifest_path, signature_path, trusted_key)
+        verify_signature(raw, signature_path, trusted_key)
         signature = read_small(signature_path, SIGNATURE_BYTES, 'signature')
         with destination.open('xb') as output:
             output.write(signature)

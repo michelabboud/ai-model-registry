@@ -6,6 +6,22 @@ separate future sequence, `registry/<N>`.
 
 ## Unreleased
 
+## [0.5.1] - 2026-11-15
+
+### Fixed
+
+- Accept model-watch downloads containing only `pr-body.md` when no worksheets
+  remain; retain directory/symlink checks and known worksheet-name admission.
+- Protect the validator's 1 MiB cap with otherwise valid oversized provider JSON,
+  the size-specific diagnostic, and a passing file just under the limit.
+- Require clients to verify signatures/hashes before parsing, refuse downgrades,
+  show a diff and obtain explicit human confirmation before activation; display
+  endpoint and launcher changes separately and never apply them automatically.
+- Verify the exact manifest bytes read for parsing using a private snapshot, and
+  reject an opened archive's signed-size mismatch before hashing it.
+- Correct the current progress summary to 0.5.0, 177 models and 13 harnesses while
+  preserving historical receipts.
+
 ## [0.5.0] - 2026-11-15
 
 ### Added

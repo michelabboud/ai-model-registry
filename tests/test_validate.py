@@ -271,8 +271,26 @@ class ValidatorTests(unittest.TestCase):
                 self.assert_bad(PROVIDER, '')
 
     def test_oversize(self):
-        (self.root / PROVIDER).write_bytes(b' ' * (1024 * 1024 + 1))
-        self.assert_bad(PROVIDER, '')
+        path = self.root / PROVIDER
+        valid = path.read_bytes()
+        size = 1024 * 1024 + 1
+        padded = valid.replace(b'{', b'{' + b' ' * (size - len(valid)), 1)
+        self.assertEqual(len(padded), size)
+        self.assertEqual(json.loads(padded), json.loads(valid))
+        path.write_bytes(padded)
+        report = self.assert_bad(PROVIDER, '')
+        self.assertTrue(any(problem['path'] == PROVIDER
+                            and problem['message'] == 'file exceeds 1048576 bytes (1 MiB)'
+                            for problem in report['problems']), report)
+
+    def test_just_under_size_limit_valid_provider(self):
+        path = self.root / PROVIDER
+        valid = path.read_bytes()
+        size = 1024 * 1024 - 1
+        path.write_bytes(valid.replace(b'{', b'{' + b' ' * (size - len(valid)), 1))
+        self.assertEqual(path.stat().st_size, size)
+        result = self.run_validator()
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
     def test_non_utf8(self):
         (self.root / PROVIDER).write_bytes(b'\xff')

@@ -251,8 +251,14 @@ python3 scripts/verify_release.py --dir /path/to/downloaded-release
 
 Verification requires OpenSSL >= 3.0 and the trusted public PEM. It checks the
 signature before parsing the manifest, then all hashes/sizes and exact safe tar
-membership without extraction. Clients must finish those checks before parsing
-registry data and enforce their own minimum-client and anti-rollback policies.
+membership without extraction. Clients **MUST** verify the signature before
+parsing manifest JSON and every signed hash and byte length before parsing
+registry data. Clients **MUST** enforce minimum-client versions, refuse downgrades
+using persisted registry-number state, show the diff, and require a person's
+explicit confirmation before activating an update. Endpoint changes (`base_url`,
+auth, protocols) and launcher changes (`harnesses/`) **MUST** be shown separately
+from each other and from other data changes, and **MUST NOT** be applied
+automatically.
 See [the release ceremony](docs/releasing.md) for signing, publishing, download
 comparison, recovery, backup and rotation; see
 [the one-time key procedure](scripts/new_signing_key.md) for Michel's setup.

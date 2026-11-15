@@ -49,7 +49,7 @@ class WorkflowShell(unittest.TestCase):
         self.origin = self.root / 'origin.git'
         self.runner = self.root / 'runner'
         self.artifact = self.runner / 'watch-in'
-        (self.artifact / 'candidates').mkdir(parents=True)
+        self.artifact.mkdir(parents=True)
         (self.artifact / 'pr-body.md').write_text('Fixture body; all values TO VERIFY.\n')
         self.bin = self.root / 'bin'
         self.bin.mkdir()
@@ -115,6 +115,7 @@ if args[:2] == ['pr', 'create'] and os.environ.get('REFUSE_CREATE') == '1':
 
     def fixture(self, **worksheets):
         directory = self.artifact / 'candidates'
+        directory.mkdir(exist_ok=True)
         for path in directory.iterdir():
             path.unlink()  # files produced by this test alone
         for vendor, content in worksheets.items():
@@ -272,6 +273,51 @@ if args[:2] == ['pr', 'create'] and os.environ.get('REFUSE_CREATE') == '1':
         self.shell('Close a pull request that no longer applies', work, env=env)
         self.assertEqual(self.remote_sha(), before)
         self.assertTrue(any(call[:3] == ['pr', 'close', '7'] for call in self.gh_calls()))
+
+    def test_body_only_download_reconciles_and_closes_existing_pr(self):
+        self.fixture(openai='resolved on the next run')
+        self.reconcile()
+        before = self.remote_sha()
+        # Artifact transport need not preserve an empty candidates directory.
+        # Create only the downloaded file, never a receiving candidates directory.
+        downloaded = self.runner / 'watch-in'
+        downloaded.rename(self.runner / 'previous-download')
+        downloaded.mkdir()
+        (downloaded / 'pr-body.md').write_text('Every vendor checked; no changes.\n')
+        self.assertEqual([path.name for path in downloaded.iterdir()], ['pr-body.md'])
+        work, env, _ = self.reconcile(pr='7')
+        self.shell('Close a pull request that no longer applies', work, env=env)
+        self.assertFalse((downloaded / 'candidates').exists())
+        self.assertEqual(self.remote_sha(), before)
+        self.assertEqual(self.git('ls-files', 'candidates', cwd=work).stdout, '')
+        self.assertTrue(any(call[:3] == ['pr', 'close', '7'] for call in self.gh_calls()))
+        self.assertEqual(sum(call[:2] == ['pr', 'create'] for call in self.gh_calls()), 1)
+
+    def test_body_only_download_does_not_create_empty_branch_or_pr(self):
+        self.assertFalse((self.artifact / 'candidates').exists())
+        self.reconcile()
+        self.assertEqual(self.remote_sha(), '')
+        self.assertFalse(any(call[:2] == ['pr', 'create'] for call in self.gh_calls()))
+
+    def test_non_directory_artifact_candidates_are_refused(self):
+        path = self.artifact / 'candidates'
+        work, env, _, _ = self.begin()
+        for kind in ('file', 'fifo', 'dangling-symlink'):
+            with self.subTest(kind=kind):
+                if kind == 'file':
+                    path.write_text('not a directory')
+                elif kind == 'fifo':
+                    os.mkfifo(path)
+                else:
+                    path.symlink_to(self.root / 'absent')
+                try:
+                    result = self.shell('Open or update the pull request', work,
+                                        env=env, check=False)
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertIn('artifact directories are not regular directories', result.stdout)
+                    self.assertEqual(self.remote_sha(), '')
+                finally:
+                    path.unlink()  # disposable input created by this subtest
 
     def test_lease_refuses_racing_update_without_overwriting_it(self):
         self.fixture(openai='v1')

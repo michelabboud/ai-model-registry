@@ -1,6 +1,7 @@
 """Offline release contract tests; keys and cloned repositories are disposable."""
 from datetime import datetime, timezone
 import hashlib
+import importlib.util
 import io
 import json
 import os
@@ -12,9 +13,14 @@ import sys
 import tarfile
 import tempfile
 import unittest
+from unittest.mock import patch
 
 REPO = Path(__file__).resolve().parents[1]
 ASSETS = ('registry.tar', 'manifest.json', 'manifest.json.sig')
+COMMON_SPEC = importlib.util.spec_from_file_location('release_common', REPO / 'scripts/release_common.py')
+assert COMMON_SPEC is not None and COMMON_SPEC.loader is not None
+release_common = importlib.util.module_from_spec(COMMON_SPEC)
+COMMON_SPEC.loader.exec_module(release_common)
 
 
 def run(args, **kwargs):
@@ -172,6 +178,20 @@ class BuildTests(ReleaseTree):
         self.assert_refused(self.cli('verify_release.py', '--dir', self.out), 'public key')
 
 
+class ArchiveBoundsTests(unittest.TestCase):
+    def test_signed_size_mismatch_refused_before_hashing(self):
+        with tempfile.TemporaryDirectory(prefix='registry-size-test-') as scratch:
+            path = Path(scratch) / 'registry.tar'
+            expected = digest(b'1234')
+            for raw in (b'123', b'12345'):
+                with self.subTest(size=len(raw)):
+                    path.write_bytes(raw)
+                    with patch.object(release_common, 'digest_stream',
+                                      side_effect=AssertionError('must refuse before hashing')):
+                        with self.assertRaisesRegex(release_common.ReleaseError, 'tar size'):
+                            release_common.check_archive(path, {'tar': expected})
+
+
 class SigningTests(ReleaseTree):
     @classmethod
     def setUpClass(cls):
@@ -224,6 +244,31 @@ class SigningTests(ReleaseTree):
         path = self.out / 'manifest.json'
         path.write_bytes(path.read_bytes().replace(b'"registry":1', b'"registry":2'))
         self.assert_refused(self.verify(), 'signature')
+
+    def test_verified_manifest_bytes_are_the_bytes_parsed_despite_path_swap(self):
+        self.signed()
+        path = self.out / 'manifest.json'
+        signed = path.read_bytes()
+        unsigned = signed.replace(b'"registry":1', b'"registry":2')
+        self.assertNotEqual(unsigned, signed)
+        path.write_bytes(unsigned)
+        read_small = release_common.read_small
+        reads = []
+
+        def swap_after_read(source, limit, label):
+            raw = read_small(source, limit, label)
+            if source == path:
+                reads.append(raw)
+                # The old verifier authenticates this replacement pathname,
+                # then parses the unsigned bytes returned from the first read.
+                path.write_bytes(signed)
+            return raw
+
+        with patch.object(release_common, 'ROOT', self.repo), \
+                patch.object(release_common, 'read_small', side_effect=swap_after_read):
+            with self.assertRaisesRegex(release_common.ReleaseError, 'signature'):
+                release_common.verify_release(self.out)
+        self.assertEqual(reads, [unsigned])
 
     def test_tampered_tar_fails_digest(self):
         self.signed()

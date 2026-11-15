@@ -1,6 +1,9 @@
 # Progress
 
-Updated: 2026-11-15. Dev mode: mvp. Repository version: 0.4.0.
+Updated: 2026-11-15. Dev mode: mvp. Repository version: 0.5.1.
+
+Current inventory: nine providers, 177 models, 13 harnesses. The task receipts
+below retain their historical counts.
 
 | Task | State | Evidence / remaining boundary |
 | --- | --- | --- |
